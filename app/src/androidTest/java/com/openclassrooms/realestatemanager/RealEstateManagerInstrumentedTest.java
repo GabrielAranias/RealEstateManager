@@ -11,12 +11,17 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 @RunWith(AndroidJUnit4.class)
-public class ExampleInstrumentedTest {
+public class RealEstateManagerInstrumentedTest {
+
+    Context appContext = getInstrumentation().getTargetContext();
 
     @Test
     public void useAppContext() {
-        // Context of the app under test
-        Context appContext = getInstrumentation().getTargetContext();
         assertEquals("com.openclassrooms.realestatemanager", appContext.getPackageName());
+    }
+
+    @Test
+    public void checkConnectivity() {
+        assertEquals(true, Utils.isInternetAvailable(appContext));
     }
 }
