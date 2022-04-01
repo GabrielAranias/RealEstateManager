@@ -1,11 +1,14 @@
-package com.openclassrooms.realestatemanager;
+package com.openclassrooms.realestatemanager.ui.old;
 
 import android.os.Bundle;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class MainActivity extends AppCompatActivity {
+import com.openclassrooms.realestatemanager.R;
+import com.openclassrooms.realestatemanager.Utils;
+
+public class InitialMainActivity extends AppCompatActivity {
 
     private TextView textViewMain;
     private TextView textViewQuantity;
@@ -13,7 +16,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_initial_main);
 
         // Bug #1 fix: wrong id
         this.textViewMain = findViewById(R.id.activity_main_activity_text_view_main);
