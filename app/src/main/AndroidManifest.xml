@@ -13,6 +13,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
+            android:name=".ui.add.AddActivity"
+            android:exported="false"
+            android:label="@string/add_activity_label" />
+        <activity
             android:name=".ui.main.MainActivity"
             android:exported="true">
             <intent-filter>
