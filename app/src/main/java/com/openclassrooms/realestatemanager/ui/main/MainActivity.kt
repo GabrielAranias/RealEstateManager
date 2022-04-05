@@ -1,7 +1,7 @@
-package com.openclassrooms.realestatemanager.ui
+package com.openclassrooms.realestatemanager.ui.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.openclassrooms.realestatemanager.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

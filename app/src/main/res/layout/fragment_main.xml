@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainFragment">
+    tools:context=".ui.main.MainFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/estate_list"
@@ -16,7 +16,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/detail_fragment_container"
-        android:name="com.openclassrooms.realestatemanager.ui.DetailFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.detail.DetailFragment"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_weight="1"
