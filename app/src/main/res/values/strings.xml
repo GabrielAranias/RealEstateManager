@@ -3,4 +3,27 @@
     <string name="property_value">Le premier bien immobilier enregistré vaut\u0020</string>
     <string name="toolbar_add">Add</string>
     <string name="add_fragment_label">New Estate</string>
+    <string name="add_estate_headline">Estate</string>
+    <string name="add_type">Type</string>
+    <string name="add_price">Price</string>
+    <string name="add_surface">Surface (m²)</string>
+    <string name="add_rooms">Rooms</string>
+    <string name="add_bedrooms">Bedrooms</string>
+    <string name="add_bathrooms">Bathrooms</string>
+    <string name="add_description">Description</string>
+    <string name="add_location_headline">Location</string>
+    <string name="add_street">Street</string>
+    <string name="add_postal_code">Postal code</string>
+    <string name="add_city">City</string>
+    <string name="add_country">Country</string>
+    <string name="add_district">District</string>
+    <string name="add_vicinity_headline">Vicinity</string>
+    <string name="add_vicinity">In the vicinity…</string>
+    <string name="add_info_headline">Information</string>
+    <string name="add_status">Status</string>
+    <string name="add_agent">Agent</string>
+    <string name="add_market_entry_date">Date of market entry</string>
+    <string name="add_sale_date">Date of sale</string>
+    <string name="add_media">Media</string>
+    <string name="add_fab">Fab to add a new estate to the list</string>
 </resources>
