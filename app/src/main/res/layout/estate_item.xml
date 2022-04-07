@@ -42,7 +42,7 @@
             tools:text="Upper East Side" />
 
         <TextView
-            android:id="@+id/estate_value"
+            android:id="@+id/estate_price"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="14dp"

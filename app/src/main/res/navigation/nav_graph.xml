@@ -13,5 +13,9 @@
         android:id="@+id/addFragment"
         android:name="com.openclassrooms.realestatemanager.ui.add.AddFragment"
         android:label="@string/add_fragment_label"
-        tools:layout="@layout/fragment_add" />
+        tools:layout="@layout/fragment_add" >
+        <action
+            android:id="@+id/action_addFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
 </navigation>

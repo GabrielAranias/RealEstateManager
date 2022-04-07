@@ -26,4 +26,6 @@
     <string name="add_sale_date">Date of sale</string>
     <string name="add_media">Media</string>
     <string name="add_fab">Fab to add a new estate to the list</string>
+    <string name="add_error_msg">Please fill out all required fields</string>
+    <string name="price">$%1$s</string>
 </resources>

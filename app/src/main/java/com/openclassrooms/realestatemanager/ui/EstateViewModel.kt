@@ -12,7 +12,7 @@ import kotlinx.coroutines.launch
 
 class EstateViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val readAllData: LiveData<List<Estate>>
+    val readAllData: LiveData<List<Estate>>
     private val repository: EstateRepository
 
     init {
