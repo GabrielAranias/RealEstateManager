@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.slidingpanelayout.widget.SlidingPaneLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSecondary"
-    tools:context=".ui.main.MainFragment">
+    tools:context=".ui.list.ListFragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/estate_list"
@@ -15,12 +15,4 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/estate_item" />
 
-    <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/detail_fragment_container"
-        android:name="com.openclassrooms.realestatemanager.ui.detail.DetailFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_weight="1"
-        tools:layout="@layout/fragment_detail" />
-
-</androidx.slidingpanelayout.widget.SlidingPaneLayout>
+</FrameLayout>

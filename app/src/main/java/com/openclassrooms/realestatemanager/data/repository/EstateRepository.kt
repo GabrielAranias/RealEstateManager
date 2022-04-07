@@ -11,4 +11,8 @@ class EstateRepository(private val estateDao: EstateDao) {
     suspend fun addEstate(estate: Estate) {
         estateDao.addEstate(estate)
     }
+
+    suspend fun updateEstate(estate: Estate) {
+        estateDao.updateEstate(estate)
+    }
 }

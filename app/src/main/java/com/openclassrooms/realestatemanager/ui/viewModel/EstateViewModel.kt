@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.ui
+package com.openclassrooms.realestatemanager.ui.viewModel
 
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
@@ -24,6 +24,12 @@ class EstateViewModel(application: Application) : AndroidViewModel(application) 
     fun addEstate(estate: Estate) {
         viewModelScope.launch(Dispatchers.IO) {
             repository.addEstate(estate)
+        }
+    }
+
+    fun updateEstate(estate: Estate) {
+        viewModelScope.launch(Dispatchers.IO) {
+            repository.updateEstate(estate)
         }
     }
 }

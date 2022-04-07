@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.ui.add
+package com.openclassrooms.realestatemanager.ui.update
 
 import android.os.Bundle
 import android.text.Editable
@@ -10,44 +10,52 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.openclassrooms.realestatemanager.R
 import com.openclassrooms.realestatemanager.data.model.Estate
-import com.openclassrooms.realestatemanager.databinding.FragmentAddBinding
+import com.openclassrooms.realestatemanager.databinding.FragmentUpdateBinding
 import com.openclassrooms.realestatemanager.ui.viewModel.EstateViewModel
 
-class AddFragment : Fragment() {
+class UpdateFragment : Fragment() {
 
-    private var _binding: FragmentAddBinding? = null
+    private var _binding: FragmentUpdateBinding? = null
     private val binding get() = _binding!!
+    private val args by navArgs<UpdateFragmentArgs>()
     private lateinit var estateViewModel: EstateViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAddBinding.inflate(inflater, container, false)
+        _binding = FragmentUpdateBinding.inflate(inflater, container, false)
 
         estateViewModel = ViewModelProvider(this)[EstateViewModel::class.java]
 
-        binding.addFab.setOnClickListener {
-            insertDataIntoDb()
+        binding.updateType.setText(args.currentEstate.type)
+        binding.updateDistrict.setText(args.currentEstate.district)
+        binding.updatePrice.setText(args.currentEstate.price.toString())
+
+        binding.updateFab.setOnClickListener {
+            updateItem()
         }
 
         return binding.root
     }
 
-    private fun insertDataIntoDb() {
-        val type = binding.addType.text.toString()
-        val district = binding.addDistrict.text.toString()
-        val price = binding.addPrice.text
+    private fun updateItem() {
+        val type = binding.updateType.text.toString()
+        val district = binding.updateDistrict.text.toString()
+        val price = binding.updatePrice.text
 
         if (inputCheck(type, district, price)) {
             // Create Estate object
-            val estate = Estate(0, type, district, Integer.parseInt(price.toString()))
-            // Add data to db
-            estateViewModel.addEstate(estate)
-            // Navigate back
-            findNavController().navigate(R.id.action_addFragment_to_listFragment)
+            val updatedEstate = Estate(
+                args.currentEstate.id, type, district, Integer.parseInt(price.toString())
+            )
+            // Update current Estate
+            estateViewModel.updateEstate(updatedEstate)
+            // Navigate back to list
+            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
         } else {
             Toast.makeText(requireContext(), R.string.add_error_msg, Toast.LENGTH_SHORT).show()
         }

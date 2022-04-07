@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.ui.main
+package com.openclassrooms.realestatemanager.ui.list
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -8,21 +8,21 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.openclassrooms.realestatemanager.databinding.FragmentMainBinding
-import com.openclassrooms.realestatemanager.ui.EstateViewModel
+import com.openclassrooms.realestatemanager.databinding.FragmentListBinding
+import com.openclassrooms.realestatemanager.ui.viewModel.EstateViewModel
 
-class MainFragment : Fragment() {
+class ListFragment : Fragment() {
 
-    private var _binding: FragmentMainBinding? = null
+    private var _binding: FragmentListBinding? = null
     private val binding get() = _binding!!
-    private val adapter = EstateListAdapter()
+    private val adapter = ListAdapter()
     private lateinit var estateViewModel: EstateViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        _binding = FragmentListBinding.inflate(inflater, container, false)
 
         initRecyclerView()
         initViewModel()

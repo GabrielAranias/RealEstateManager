@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorSecondary"
-    tools:context=".ui.add.AddFragment">
+    tools:context=".ui.update.UpdateFragment">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -16,7 +16,7 @@
             android:layout_height="wrap_content">
 
             <TextView
-                android:id="@+id/add_estate_headline"
+                android:id="@+id/update_estate_headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -26,16 +26,16 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <LinearLayout
-                android:id="@+id/add_type_and_price"
+                android:id="@+id/update_type_and_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_estate_headline">
+                app:layout_constraintTop_toBottomOf="@+id/update_estate_headline">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_type"
+                    android:id="@+id/update_type"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -48,7 +48,7 @@
                     app:drawableStartCompat="@drawable/ic_baseline_apartment_24" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_price"
+                    android:id="@+id/update_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -64,7 +64,7 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/add_surface_and_rooms"
+                android:id="@+id/update_surface_and_rooms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -73,10 +73,10 @@
                 android:layout_marginBottom="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_type_and_price">
+                app:layout_constraintTop_toBottomOf="@+id/update_type_and_price">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_surface"
+                    android:id="@+id/update_surface"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -89,7 +89,7 @@
                     app:drawableStartCompat="@drawable/ic_baseline_aspect_ratio_24" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_rooms"
+                    android:id="@+id/update_rooms"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -105,16 +105,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/add_bedrooms_and_bathrooms"
+                android:id="@+id/update_bedrooms_and_bathrooms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_surface_and_rooms">
+                app:layout_constraintTop_toBottomOf="@+id/update_surface_and_rooms">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_bedrooms"
+                    android:id="@+id/update_bedrooms"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -127,7 +127,7 @@
                     app:drawableStartCompat="@drawable/ic_baseline_bed_24" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_bathrooms"
+                    android:id="@+id/update_bathrooms"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -143,7 +143,7 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/add_description"
+                android:id="@+id/update_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -158,10 +158,10 @@
                 android:minHeight="48dp"
                 app:drawableStartCompat="@drawable/ic_baseline_description_24"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_bedrooms_and_bathrooms" />
+                app:layout_constraintTop_toBottomOf="@+id/update_bedrooms_and_bathrooms" />
 
             <TextView
-                android:id="@+id/add_location_headline"
+                android:id="@+id/update_location_headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -171,19 +171,19 @@
                 android:text="@string/add_location_headline"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_description" />
+                app:layout_constraintTop_toBottomOf="@+id/update_description" />
 
             <LinearLayout
-                android:id="@+id/add_street_and_postal_code"
+                android:id="@+id/update_street_and_postal_code"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_location_headline">
+                app:layout_constraintTop_toBottomOf="@+id/update_location_headline">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_street"
+                    android:id="@+id/update_street"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -196,7 +196,7 @@
                     app:drawableStartCompat="@drawable/ic_baseline_streetview_24" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_postal_code"
+                    android:id="@+id/update_postal_code"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -212,16 +212,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/add_city_and_country"
+                android:id="@+id/update_city_and_country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_street_and_postal_code">
+                app:layout_constraintTop_toBottomOf="@+id/update_street_and_postal_code">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_city"
+                    android:id="@+id/update_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -234,7 +234,7 @@
                     app:drawableStartCompat="@drawable/ic_baseline_maps_home_work_24" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_country"
+                    android:id="@+id/update_country"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -250,7 +250,7 @@
             </LinearLayout>
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/add_district"
+                android:id="@+id/update_district"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -263,11 +263,11 @@
                 app:drawableStartCompat="@drawable/ic_baseline_holiday_village_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_city_and_country"
+                app:layout_constraintTop_toBottomOf="@+id/update_city_and_country"
                 app:layout_constraintWidth_percent="0.5" />
 
             <TextView
-                android:id="@+id/add_vicinity_headline"
+                android:id="@+id/update_vicinity_headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -277,10 +277,10 @@
                 android:text="@string/add_vicinity_headline"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_district" />
+                app:layout_constraintTop_toBottomOf="@+id/update_district" />
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/add_vicinity"
+                android:id="@+id/update_vicinity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -292,10 +292,10 @@
                 android:minHeight="48dp"
                 app:drawableStartCompat="@drawable/ic_baseline_park_24"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_vicinity_headline" />
+                app:layout_constraintTop_toBottomOf="@+id/update_vicinity_headline" />
 
             <TextView
-                android:id="@+id/add_info_headline"
+                android:id="@+id/update_info_headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -305,19 +305,19 @@
                 android:text="@string/add_info_headline"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_vicinity" />
+                app:layout_constraintTop_toBottomOf="@+id/update_vicinity" />
 
             <LinearLayout
-                android:id="@+id/add_status_and_agent"
+                android:id="@+id/update_status_and_agent"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_info_headline">
+                app:layout_constraintTop_toBottomOf="@+id/update_info_headline">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_status"
+                    android:id="@+id/update_status"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -330,7 +330,7 @@
                     app:drawableStartCompat="@drawable/ic_baseline_point_of_sale_24" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_agent"
+                    android:id="@+id/update_agent"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -346,16 +346,16 @@
             </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/add_dates"
+                android:id="@+id/update_dates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_status_and_agent">
+                app:layout_constraintTop_toBottomOf="@+id/update_status_and_agent">
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_entry_date"
+                    android:id="@+id/update_entry_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -368,7 +368,7 @@
                     app:drawableStartCompat="@drawable/ic_baseline_date_range_24" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_sale_date"
+                    android:id="@+id/update_sale_date"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -384,7 +384,7 @@
             </LinearLayout>
 
             <TextView
-                android:id="@+id/add_media_headline"
+                android:id="@+id/update_media_headline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
@@ -394,7 +394,7 @@
                 android:text="@string/add_media"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_dates" />
+                app:layout_constraintTop_toBottomOf="@+id/update_dates" />
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:layout_width="100dp"
@@ -404,7 +404,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_media_headline"
+                app:layout_constraintTop_toBottomOf="@+id/update_media_headline"
                 app:srcCompat="@drawable/penthouse_sample">
 
             </androidx.appcompat.widget.AppCompatImageView>
@@ -414,12 +414,12 @@
     </ScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/add_fab"
+        android:id="@+id/update_fab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
-        android:contentDescription="@string/add_fab"
+        android:contentDescription="@string/update_fab"
         android:minWidth="48dp"
         android:minHeight="48dp"
         app:srcCompat="@drawable/ic_baseline_check_24" />

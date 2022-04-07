@@ -25,7 +25,10 @@
     <string name="add_market_entry_date">Date of market entry</string>
     <string name="add_sale_date">Date of sale</string>
     <string name="add_media">Media</string>
-    <string name="add_fab">Fab to add a new estate to the list</string>
+    <string name="add_fab">Fab to add new estate to the list</string>
     <string name="add_error_msg">Please fill out all required fields</string>
     <string name="price">$%1$s</string>
+    <string name="update_fab">Fab to validate estate\'s new info</string>
+    <string name="update_fragment_label">Update Information</string>
+    <string name="detail_fab">Fab to update estate\'s info</string>
 </resources>
