@@ -13,15 +13,15 @@
     <string name="add_description">Description</string>
     <string name="add_location_headline">Location</string>
     <string name="add_street">Street</string>
-    <string name="add_postal_code">Postal code</string>
     <string name="add_city">City</string>
+    <string name="add_postal_code">Postal code</string>
     <string name="add_country">Country</string>
     <string name="add_district">District</string>
     <string name="add_vicinity_headline">Vicinity</string>
     <string name="add_vicinity">In the vicinity…</string>
     <string name="add_info_headline">Information</string>
     <string name="add_status">Status</string>
-    <string name="add_agent">Agent</string>
+    <string name="add_realtor">Realtor</string>
     <string name="add_market_entry_date">Date of market entry</string>
     <string name="add_sale_date">Date of sale</string>
     <string name="add_media">Media</string>
@@ -31,4 +31,12 @@
     <string name="update_fab">Fab to validate estate\'s new info</string>
     <string name="update_fragment_label">Update Information</string>
     <string name="detail_fab">Fab to update estate\'s info</string>
+    <string name="detail_description_headline">Description</string>
+    <string name="detail_about_headline">About</string>
+    <string name="detail_surface">Surface: %1$sm²</string>
+    <string name="detail_rooms">Number of rooms: %1$s</string>
+    <string name="detail_bedrooms">Number of bedrooms: %1$s</string>
+    <string name="detail_bathrooms">Number of bathrooms: %1$s</string>
+    <string name="detail_realtor">Realtor: %1$s</string>
+    <string name="detail_status">Status: %1$s</string>
 </resources>

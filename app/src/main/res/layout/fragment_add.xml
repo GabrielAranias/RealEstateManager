@@ -174,7 +174,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/add_description" />
 
             <LinearLayout
-                android:id="@+id/add_street_and_postal_code"
+                android:id="@+id/add_street_and_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
@@ -196,34 +196,10 @@
                     app:drawableStartCompat="@drawable/ic_baseline_streetview_24" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_postal_code"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:drawablePadding="6dp"
-                    android:hint="@string/add_postal_code"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/add_city_and_country"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_street_and_postal_code">
-
-                <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_city"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:drawablePadding="6dp"
                     android:hint="@string/add_city"
@@ -232,6 +208,30 @@
                     android:minWidth="48dp"
                     android:minHeight="48dp"
                     app:drawableStartCompat="@drawable/ic_baseline_maps_home_work_24" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/add_postal_code_and_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="8dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_street_and_city">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/add_postal_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:drawablePadding="6dp"
+                    android:hint="@string/add_postal_code"
+                    android:imeOptions="actionNext"
+                    android:inputType="number"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp"
+                    app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/add_country"
@@ -263,7 +263,7 @@
                 app:drawableStartCompat="@drawable/ic_baseline_holiday_village_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_city_and_country"
+                app:layout_constraintTop_toBottomOf="@+id/add_postal_code_and_country"
                 app:layout_constraintWidth_percent="0.5" />
 
             <TextView
@@ -324,21 +324,21 @@
                     android:drawablePadding="6dp"
                     android:hint="@string/add_status"
                     android:imeOptions="actionNext"
-                    android:inputType="textPostalAddress"
+                    android:inputType="text"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
                     app:drawableStartCompat="@drawable/ic_baseline_point_of_sale_24" />
 
                 <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/add_agent"
+                    android:id="@+id/add_realtor"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
                     android:drawablePadding="6dp"
-                    android:hint="@string/add_agent"
+                    android:hint="@string/add_realtor"
                     android:imeOptions="actionNext"
-                    android:inputType="number"
+                    android:inputType="text"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
                     app:drawableStartCompat="@drawable/ic_baseline_person_24" />

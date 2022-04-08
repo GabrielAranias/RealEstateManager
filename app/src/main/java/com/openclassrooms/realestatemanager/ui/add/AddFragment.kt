@@ -12,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.openclassrooms.realestatemanager.R
 import com.openclassrooms.realestatemanager.data.model.Estate
+import com.openclassrooms.realestatemanager.data.model.Location
+import com.openclassrooms.realestatemanager.data.model.Rooms
 import com.openclassrooms.realestatemanager.databinding.FragmentAddBinding
 import com.openclassrooms.realestatemanager.ui.viewModel.EstateViewModel
 
@@ -29,27 +31,50 @@ class AddFragment : Fragment() {
 
         estateViewModel = ViewModelProvider(this)[EstateViewModel::class.java]
 
-        binding.addFab.setOnClickListener {
-            insertDataIntoDb()
-        }
+        initFab()
 
         return binding.root
     }
 
-    private fun insertDataIntoDb() {
-        val type = binding.addType.text.toString()
-        val district = binding.addDistrict.text.toString()
-        val price = binding.addPrice.text
+    // Set up fab to create new item w/ info
+    private fun initFab() {
+        binding.addFab.setOnClickListener {
+            val type = binding.addType.text.toString()
+            val district = binding.addDistrict.text.toString()
+            val price = binding.addPrice.text
 
-        if (inputCheck(type, district, price)) {
-            // Create Estate object
-            val estate = Estate(0, type, district, Integer.parseInt(price.toString()))
-            // Add data to db
-            estateViewModel.addEstate(estate)
-            // Navigate back
-            findNavController().navigate(R.id.action_addFragment_to_listFragment)
-        } else {
-            Toast.makeText(requireContext(), R.string.add_error_msg, Toast.LENGTH_SHORT).show()
+            if (inputCheck(type, district, price)) {
+                // Create Estate object
+                val rooms = Rooms(
+                    nbRooms = Integer.parseInt(binding.addRooms.text.toString()),
+                    nbBedrooms = Integer.parseInt(binding.addBedrooms.text.toString()),
+                    nbBathrooms = Integer.parseInt(binding.addBathrooms.text.toString())
+                )
+                val location = Location(
+                    street = binding.addStreet.text.toString(),
+                    city = binding.addCity.text.toString(),
+                    postalCode = Integer.parseInt(binding.addPostalCode.text.toString()),
+                    country = binding.addCountry.text.toString()
+                )
+                val estate = Estate(
+                    0,
+                    type,
+                    district,
+                    Integer.parseInt(price.toString()),
+                    description = binding.addDescription.text.toString(),
+                    surface = Integer.parseInt(binding.addSurface.text.toString()),
+                    realtor = binding.addRealtor.text.toString(),
+                    status = binding.addStatus.text.toString(),
+                    rooms,
+                    location
+                )
+                // Add data to db
+                estateViewModel.addEstate(estate)
+                // Navigate back
+                findNavController().navigate(R.id.action_addFragment_to_listFragment)
+            } else {
+                Toast.makeText(requireContext(), R.string.add_error_msg, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

@@ -40,7 +40,7 @@
     <fragment
         android:id="@+id/listFragment"
         android:name="com.openclassrooms.realestatemanager.ui.list.ListFragment"
-        android:label="fragment_list"
+        android:label="@string/app_name"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_detailFragment"

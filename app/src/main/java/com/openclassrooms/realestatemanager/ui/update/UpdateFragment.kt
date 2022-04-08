@@ -13,6 +13,8 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.openclassrooms.realestatemanager.R
 import com.openclassrooms.realestatemanager.data.model.Estate
+import com.openclassrooms.realestatemanager.data.model.Location
+import com.openclassrooms.realestatemanager.data.model.Rooms
 import com.openclassrooms.realestatemanager.databinding.FragmentUpdateBinding
 import com.openclassrooms.realestatemanager.ui.viewModel.EstateViewModel
 
@@ -31,33 +33,69 @@ class UpdateFragment : Fragment() {
 
         estateViewModel = ViewModelProvider(this)[EstateViewModel::class.java]
 
-        binding.updateType.setText(args.currentEstate.type)
-        binding.updateDistrict.setText(args.currentEstate.district)
-        binding.updatePrice.setText(args.currentEstate.price.toString())
-
-        binding.updateFab.setOnClickListener {
-            updateItem()
-        }
+        initUi()
+        initFab()
 
         return binding.root
     }
 
-    private fun updateItem() {
-        val type = binding.updateType.text.toString()
-        val district = binding.updateDistrict.text.toString()
-        val price = binding.updatePrice.text
+    //Set up layout w/ pre-filled info from current item
+    private fun initUi() {
+        binding.updateType.setText(args.currentEstate.type)
+        binding.updateDistrict.setText(args.currentEstate.district)
+        binding.updatePrice.setText(args.currentEstate.price.toString())
+        binding.updateDescription.setText(args.currentEstate.description)
+        binding.updateSurface.setText(args.currentEstate.surface.toString())
+        binding.updateRealtor.setText(args.currentEstate.realtor)
+        binding.updateStatus.setText(args.currentEstate.status)
+        binding.updateRooms.setText(args.currentEstate.rooms.nbRooms.toString())
+        binding.updateBedrooms.setText(args.currentEstate.rooms.nbBedrooms.toString())
+        binding.updateBathrooms.setText(args.currentEstate.rooms.nbBathrooms.toString())
+        binding.updateStreet.setText(args.currentEstate.location.street)
+        binding.updateCity.setText(args.currentEstate.location.city)
+        binding.updatePostalCode.setText(args.currentEstate.location.postalCode.toString())
+        binding.updateCountry.setText(args.currentEstate.location.country)
+    }
 
-        if (inputCheck(type, district, price)) {
-            // Create Estate object
-            val updatedEstate = Estate(
-                args.currentEstate.id, type, district, Integer.parseInt(price.toString())
-            )
-            // Update current Estate
-            estateViewModel.updateEstate(updatedEstate)
-            // Navigate back to list
-            findNavController().navigate(R.id.action_updateFragment_to_listFragment)
-        } else {
-            Toast.makeText(requireContext(), R.string.add_error_msg, Toast.LENGTH_SHORT).show()
+    // Set up fab to update item w/ new info
+    private fun initFab() {
+        binding.updateFab.setOnClickListener {
+            val type = binding.updateType.text.toString()
+            val district = binding.updateDistrict.text.toString()
+            val price = binding.updatePrice.text
+
+            if (inputCheck(type, district, price)) {
+                // Create Estate object
+                val rooms = Rooms(
+                    nbRooms = Integer.parseInt(binding.updateRooms.text.toString()),
+                    nbBedrooms = Integer.parseInt(binding.updateBedrooms.text.toString()),
+                    nbBathrooms = Integer.parseInt(binding.updateBathrooms.text.toString())
+                )
+                val location = Location(
+                    street = binding.updateStreet.text.toString(),
+                    city = binding.updateCity.text.toString(),
+                    postalCode = Integer.parseInt(binding.updatePostalCode.text.toString()),
+                    country = binding.updateCountry.text.toString()
+                )
+                val updatedEstate = Estate(
+                    args.currentEstate.id,
+                    type,
+                    district,
+                    Integer.parseInt(price.toString()),
+                    description = binding.updateDescription.text.toString(),
+                    surface = Integer.parseInt(binding.updateSurface.text.toString()),
+                    realtor = binding.updateRealtor.text.toString(),
+                    status = binding.updateStatus.text.toString(),
+                    rooms,
+                    location
+                )
+                // Update current Estate
+                estateViewModel.updateEstate(updatedEstate)
+                // Navigate back to list
+                findNavController().navigate(R.id.action_updateFragment_to_listFragment)
+            } else {
+                Toast.makeText(requireContext(), R.string.add_error_msg, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 
