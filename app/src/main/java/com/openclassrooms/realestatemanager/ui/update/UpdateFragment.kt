@@ -11,12 +11,16 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.openclassrooms.realestatemanager.R
+import com.openclassrooms.realestatemanager.data.model.Dates
 import com.openclassrooms.realestatemanager.data.model.Estate
 import com.openclassrooms.realestatemanager.data.model.Location
 import com.openclassrooms.realestatemanager.data.model.Rooms
 import com.openclassrooms.realestatemanager.databinding.FragmentUpdateBinding
 import com.openclassrooms.realestatemanager.ui.viewModel.EstateViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class UpdateFragment : Fragment() {
 
@@ -24,6 +28,9 @@ class UpdateFragment : Fragment() {
     private val binding get() = _binding!!
     private val args by navArgs<UpdateFragmentArgs>()
     private lateinit var estateViewModel: EstateViewModel
+    private val outputDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).apply {
+        timeZone = TimeZone.getTimeZone("UTC")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -34,6 +41,7 @@ class UpdateFragment : Fragment() {
         estateViewModel = ViewModelProvider(this)[EstateViewModel::class.java]
 
         initUi()
+        initDateBtn()
         initFab()
 
         return binding.root
@@ -55,6 +63,8 @@ class UpdateFragment : Fragment() {
         binding.updateCity.setText(args.currentEstate.location.city)
         binding.updatePostalCode.setText(args.currentEstate.location.postalCode.toString())
         binding.updateCountry.setText(args.currentEstate.location.country)
+        binding.updateSelectedEntryDate.text = args.currentEstate.dates.entryDate
+        binding.updateSelectedSaleDate.text = args.currentEstate.dates.saleDate
     }
 
     // Set up fab to update item w/ new info
@@ -77,6 +87,10 @@ class UpdateFragment : Fragment() {
                     postalCode = Integer.parseInt(binding.updatePostalCode.text.toString()),
                     country = binding.updateCountry.text.toString()
                 )
+                val dates = Dates(
+                    entryDate = binding.updateSelectedEntryDate.text.toString(),
+                    saleDate = binding.updateSelectedSaleDate.text.toString()
+                )
                 val updatedEstate = Estate(
                     args.currentEstate.id,
                     type,
@@ -87,7 +101,8 @@ class UpdateFragment : Fragment() {
                     realtor = binding.updateRealtor.text.toString(),
                     status = binding.updateStatus.text.toString(),
                     rooms,
-                    location
+                    location,
+                    dates
                 )
                 // Update current Estate
                 estateViewModel.updateEstate(updatedEstate)
@@ -101,6 +116,33 @@ class UpdateFragment : Fragment() {
 
     private fun inputCheck(type: String, district: String, price: Editable?): Boolean {
         return !(TextUtils.isEmpty(type) && TextUtils.isEmpty(district) && price!!.isEmpty())
+    }
+
+    private fun initDateBtn() {
+        // Estate's date of market entry btn
+        binding.updateEntryDate.setOnClickListener {
+            val entryPicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText(R.string.date_picker_entry)
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build()
+            entryPicker.addOnPositiveButtonClickListener {
+                val entrySelectedDate = outputDateFormat.format(it)
+                binding.updateSelectedEntryDate.text = entrySelectedDate
+            }
+            entryPicker.show(parentFragmentManager, "Entry Date Picker")
+        }
+        // Estate's date of sale btn
+        binding.updateSaleDate.setOnClickListener {
+            val salePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText(R.string.date_picker_sale)
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build()
+            salePicker.addOnPositiveButtonClickListener {
+                val saleSelectedDate = outputDateFormat.format(it)
+                binding.updateSelectedSaleDate.text = saleSelectedDate
+            }
+            salePicker.show(parentFragmentManager, "Sale Date Picker")
+        }
     }
 
     override fun onDestroyView() {

@@ -60,6 +60,12 @@ class DetailFragment : Fragment() {
         binding.detailCity.text = args.currentEstate.location.city
         binding.detailPostalCode.text = args.currentEstate.location.postalCode.toString()
         binding.detailCountry.text = args.currentEstate.location.country
+        binding.detailEntryDate.text = requireContext().getString(
+            R.string.detail_entry_date, args.currentEstate.dates.entryDate
+        )
+        binding.detailSaleDate.text = requireContext().getString(
+            R.string.detail_sale_date, args.currentEstate.dates.saleDate
+        )
     }
 
     // Set up fab to navigate to UpdateFragment on click
@@ -75,7 +81,8 @@ class DetailFragment : Fragment() {
                 args.currentEstate.realtor,
                 args.currentEstate.status,
                 args.currentEstate.rooms,
-                args.currentEstate.location
+                args.currentEstate.location,
+                args.currentEstate.dates
             )
             val action =
                 DetailFragmentDirections.actionDetailFragmentToUpdateFragment(currentEstate)

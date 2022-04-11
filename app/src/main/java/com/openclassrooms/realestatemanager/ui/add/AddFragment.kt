@@ -10,18 +10,25 @@ import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.openclassrooms.realestatemanager.R
+import com.openclassrooms.realestatemanager.data.model.Dates
 import com.openclassrooms.realestatemanager.data.model.Estate
 import com.openclassrooms.realestatemanager.data.model.Location
 import com.openclassrooms.realestatemanager.data.model.Rooms
 import com.openclassrooms.realestatemanager.databinding.FragmentAddBinding
 import com.openclassrooms.realestatemanager.ui.viewModel.EstateViewModel
+import java.text.SimpleDateFormat
+import java.util.*
 
 class AddFragment : Fragment() {
 
     private var _binding: FragmentAddBinding? = null
     private val binding get() = _binding!!
     private lateinit var estateViewModel: EstateViewModel
+    private val outputDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).apply {
+        timeZone = TimeZone.getTimeZone("UTC")
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -31,6 +38,7 @@ class AddFragment : Fragment() {
 
         estateViewModel = ViewModelProvider(this)[EstateViewModel::class.java]
 
+        initDateBtn()
         initFab()
 
         return binding.root
@@ -56,6 +64,10 @@ class AddFragment : Fragment() {
                     postalCode = Integer.parseInt(binding.addPostalCode.text.toString()),
                     country = binding.addCountry.text.toString()
                 )
+                val dates = Dates(
+                    entryDate = binding.addSelectedEntryDate.text.toString(),
+                    saleDate = binding.addSelectedSaleDate.text.toString()
+                )
                 val estate = Estate(
                     0,
                     type,
@@ -66,7 +78,8 @@ class AddFragment : Fragment() {
                     realtor = binding.addRealtor.text.toString(),
                     status = binding.addStatus.text.toString(),
                     rooms,
-                    location
+                    location,
+                    dates
                 )
                 // Add data to db
                 estateViewModel.addEstate(estate)
@@ -80,6 +93,33 @@ class AddFragment : Fragment() {
 
     private fun inputCheck(type: String, district: String, price: Editable?): Boolean {
         return !(TextUtils.isEmpty(type) && TextUtils.isEmpty(district) && price!!.isEmpty())
+    }
+
+    private fun initDateBtn() {
+        // Estate's date of market entry btn
+        binding.addEntryDate.setOnClickListener {
+            val entryPicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText(R.string.date_picker_entry)
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build()
+            entryPicker.addOnPositiveButtonClickListener {
+                val entrySelectedDate = outputDateFormat.format(it)
+                binding.addSelectedEntryDate.text = entrySelectedDate
+            }
+            entryPicker.show(parentFragmentManager, "Entry Date Picker")
+        }
+        // Estate's date of sale btn
+        binding.addSaleDate.setOnClickListener {
+            val salePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText(R.string.date_picker_sale)
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build()
+            salePicker.addOnPositiveButtonClickListener {
+                val saleSelectedDate = outputDateFormat.format(it)
+                binding.addSelectedSaleDate.text = saleSelectedDate
+            }
+            salePicker.show(parentFragmentManager, "Sale Date Picker")
+        }
     }
 
     override fun onDestroyView() {

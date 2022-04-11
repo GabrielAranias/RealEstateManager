@@ -309,6 +309,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/colorAccent"
         android:contentDescription="@string/detail_fab"
         android:minWidth="48dp"
         android:minHeight="48dp"

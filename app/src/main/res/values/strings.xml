@@ -22,7 +22,7 @@
     <string name="add_info_headline">Information</string>
     <string name="add_status">Status</string>
     <string name="add_realtor">Realtor</string>
-    <string name="add_market_entry_date">Date of market entry</string>
+    <string name="add_market_entry_date">Market entry</string>
     <string name="add_sale_date">Date of sale</string>
     <string name="add_media">Media</string>
     <string name="add_fab">Fab to add new estate to the list</string>
@@ -39,4 +39,10 @@
     <string name="detail_bathrooms">Number of bathrooms: %1$s</string>
     <string name="detail_realtor">Realtor: %1$s</string>
     <string name="detail_status">Status: %1$s</string>
+    <string name="detail_entry_date">Market entry: %1$s</string>
+    <string name="detail_sale_date">Date of sale: %1$s</string>
+    <string name="date_picker_entry">Select estate\'s date of market entry</string>
+    <string name="date_picker_sale">Select estate\'s date of sale</string>
+    <string name="no_date_selected">No date selected</string>
+    <string name="not_sold">Not sold yet</string>
 </resources>

@@ -30,36 +30,51 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/update_estate_headline">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_type"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_type"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_apartment_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_apartment_24"
+                    app:startIconTint="@color/colorPrimary">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_price"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_type"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_price"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_attach_money_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_attach_money_24"
+                    app:startIconTint="@color/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_price"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
@@ -71,36 +86,51 @@
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/update_type_and_price">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_surface"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_surface"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_aspect_ratio_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_aspect_ratio_24"
+                    app:startIconTint="@color/colorPrimary">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_rooms"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_surface"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_rooms"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_home_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_home_24"
+                    app:startIconTint="@color/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_rooms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
@@ -109,56 +139,79 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/update_surface_and_rooms">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_bedrooms"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_bedrooms"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_bed_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_bed_24"
+                    app:startIconTint="@color/colorPrimary">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_bathrooms"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_bedrooms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_bathrooms"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_hot_tub_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_hot_tub_24"
+                    app:startIconTint="@color/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_bathrooms"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/update_description"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/update_description_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="16dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginBottom="8dp"
-                android:drawablePadding="6dp"
                 android:hint="@string/add_description"
-                android:imeOptions="actionNext"
-                android:inputType="textAutoCorrect"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                app:drawableStartCompat="@drawable/ic_baseline_description_24"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/update_bedrooms_and_bathrooms" />
+                app:layout_constraintTop_toBottomOf="@+id/update_bedrooms_and_bathrooms"
+                app:startIconDrawable="@drawable/ic_baseline_description_24"
+                app:startIconTint="@color/colorPrimary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/update_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="textAutoCorrect"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/update_location_headline"
@@ -171,43 +224,58 @@
                 android:text="@string/add_location_headline"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/update_description" />
+                app:layout_constraintTop_toBottomOf="@+id/update_description_layout" />
 
             <LinearLayout
                 android:id="@+id/update_street_and_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/update_location_headline">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_street"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_street"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPostalAddress"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_streetview_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_streetview_24"
+                    app:startIconTint="@color/colorPrimary">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_city"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_street"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPostalAddress"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_city"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_maps_home_work_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_maps_home_work_24"
+                    app:startIconTint="@color/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_city"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
@@ -216,55 +284,78 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/update_street_and_city">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_postal_code"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_postal_code"
-                    android:imeOptions="actionNext"
-                    android:inputType="number"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_location_on_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_location_on_24"
+                    app:startIconTint="@color/colorPrimary">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_country"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_postal_code"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="number"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_country"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_terrain_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_terrain_24"
+                    app:startIconTint="@color/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_country"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/update_district"
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/update_district_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
-                android:drawablePadding="6dp"
                 android:hint="@string/add_district"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                app:drawableStartCompat="@drawable/ic_baseline_holiday_village_24"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/update_postal_code_and_country"
-                app:layout_constraintWidth_percent="0.5" />
+                app:layout_constraintWidth_percent="0.5"
+                app:startIconDrawable="@drawable/ic_baseline_holiday_village_24"
+                app:startIconTint="@color/colorPrimary">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/update_district"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:imeOptions="actionNext"
+                    android:inputType="text"
+                    android:minWidth="48dp"
+                    android:minHeight="48dp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
 
             <TextView
                 android:id="@+id/update_vicinity_headline"
@@ -277,7 +368,7 @@
                 android:text="@string/add_vicinity_headline"
                 android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/update_district" />
+                app:layout_constraintTop_toBottomOf="@+id/update_district_layout" />
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/update_vicinity"
@@ -285,6 +376,7 @@
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
                 android:drawablePadding="6dp"
+                android:drawableTint="@color/colorPrimary"
                 android:hint="@string/add_vicinity"
                 android:imeOptions="actionNext"
                 android:inputType="text"
@@ -292,7 +384,8 @@
                 android:minHeight="48dp"
                 app:drawableStartCompat="@drawable/ic_baseline_park_24"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/update_vicinity_headline" />
+                app:layout_constraintTop_toBottomOf="@+id/update_vicinity_headline"
+                tools:targetApi="m" />
 
             <TextView
                 android:id="@+id/update_info_headline"
@@ -308,80 +401,118 @@
                 app:layout_constraintTop_toBottomOf="@+id/update_vicinity" />
 
             <LinearLayout
-                android:id="@+id/update_status_and_agent"
+                android:id="@+id/update_status_and_realtor"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="8dp"
+                android:baselineAligned="false"
                 android:orientation="horizontal"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/update_info_headline">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_status"
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_status"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_point_of_sale_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_point_of_sale_24"
+                    app:startIconTint="@color/colorPrimary">
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/update_realtor"
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_status"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="text"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:layout_weight="1"
-                    android:drawablePadding="6dp"
                     android:hint="@string/add_realtor"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:minWidth="48dp"
-                    android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_person_24" />
+                    app:startIconDrawable="@drawable/ic_baseline_person_24"
+                    app:startIconTint="@color/colorPrimary">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/update_realtor"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:imeOptions="actionNext"
+                        android:inputType="textPersonName"
+                        android:minWidth="48dp"
+                        android:minHeight="48dp" />
+
+                </com.google.android.material.textfield.TextInputLayout>
 
             </LinearLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/update_dates"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:orientation="horizontal"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/update_status_and_agent">
+                app:layout_constraintTop_toBottomOf="@+id/update_status_and_realtor">
 
-                <com.google.android.material.textfield.TextInputEditText
+                <Button
                     android:id="@+id/update_entry_date"
-                    android:layout_width="match_parent"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:drawablePadding="6dp"
-                    android:hint="@string/add_market_entry_date"
-                    android:imeOptions="actionNext"
-                    android:inputType="date"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_date_range_24" />
+                    android:padding="8dp"
+                    android:text="@string/add_market_entry_date"
+                    app:icon="@drawable/ic_baseline_date_range_24"
+                    app:layout_constraintEnd_toStartOf="@+id/update_sale_date"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                <com.google.android.material.textfield.TextInputEditText
+                <Button
                     android:id="@+id/update_sale_date"
-                    android:layout_width="match_parent"
+                    style="@style/Widget.MaterialComponents.Button.Icon"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:layout_weight="1"
-                    android:drawablePadding="6dp"
-                    android:hint="@string/add_sale_date"
-                    android:imeOptions="actionDone"
-                    android:inputType="date"
                     android:minWidth="48dp"
                     android:minHeight="48dp"
-                    app:drawableStartCompat="@drawable/ic_baseline_update_24" />
+                    android:padding="8dp"
+                    android:text="@string/add_sale_date"
+                    app:icon="@drawable/ic_baseline_update_24"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@+id/update_entry_date"
+                    app:layout_constraintTop_toTopOf="parent" />
 
-            </LinearLayout>
+                <TextView
+                    android:id="@+id/update_selected_entry_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_date_selected"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    app:layout_constraintEnd_toEndOf="@+id/update_entry_date"
+                    app:layout_constraintStart_toStartOf="@+id/update_entry_date"
+                    app:layout_constraintTop_toBottomOf="@+id/update_entry_date" />
+
+                <TextView
+                    android:id="@+id/update_selected_sale_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/not_sold"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    app:layout_constraintEnd_toEndOf="@+id/update_sale_date"
+                    app:layout_constraintStart_toStartOf="@+id/update_sale_date"
+                    app:layout_constraintTop_toBottomOf="@+id/update_sale_date" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <TextView
                 android:id="@+id/update_media_headline"
@@ -419,6 +550,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
+        android:backgroundTint="@color/colorAccent"
         android:contentDescription="@string/update_fab"
         android:minWidth="48dp"
         android:minHeight="48dp"

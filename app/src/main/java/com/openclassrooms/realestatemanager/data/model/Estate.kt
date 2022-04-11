@@ -21,7 +21,9 @@ data class Estate(
     @Embedded
     val rooms: Rooms,
     @Embedded
-    val location: Location
+    val location: Location,
+    @Embedded
+    val dates: Dates
 ) : Parcelable
 
 @Parcelize
@@ -37,4 +39,10 @@ data class Location(
     val city: String,
     val postalCode: Int,
     val country: String
+) : Parcelable
+
+@Parcelize
+data class Dates(
+    val entryDate: String,
+    val saleDate: String
 ) : Parcelable
