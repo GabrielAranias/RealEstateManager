@@ -45,6 +45,11 @@
     <string name="date_picker_sale">Select estate\'s date of sale</string>
     <string name="no_date_selected">No date selected</string>
     <string name="not_sold">Not sold yet</string>
+    <string name="notification_channel_title">Notification channel</string>
+    <string name="notification_channel_description">Notification sent to user after creation of new estate</string>
+    <string name="notification_title">New estate added</string>
+    <string name="notification_description">Estate creation successful</string>
+    <string name="notification_description_long">The estate you have just created has been successfully added to the database</string>
 
     <string-array name="types">
         <item>Condo</item>
@@ -57,7 +62,7 @@
         <item>Villa</item>
     </string-array>
     <string-array name="status">
-        <item>Available</item>
+        <item>Vacant</item>
         <item>Sold</item>
     </string-array>
 </resources>

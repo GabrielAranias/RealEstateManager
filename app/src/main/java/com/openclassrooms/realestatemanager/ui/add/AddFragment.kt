@@ -1,5 +1,8 @@
 package com.openclassrooms.realestatemanager.ui.add
 
+import android.annotation.SuppressLint
+import android.app.PendingIntent
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -8,6 +11,8 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -18,7 +23,9 @@ import com.openclassrooms.realestatemanager.data.model.Estate
 import com.openclassrooms.realestatemanager.data.model.Location
 import com.openclassrooms.realestatemanager.data.model.Rooms
 import com.openclassrooms.realestatemanager.databinding.FragmentAddBinding
+import com.openclassrooms.realestatemanager.ui.main.MainActivity
 import com.openclassrooms.realestatemanager.ui.viewModel.EstateViewModel
+import com.openclassrooms.realestatemanager.utils.Constants
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -85,11 +92,37 @@ class AddFragment : Fragment() {
                 )
                 // Add data to db
                 estateViewModel.addEstate(estate)
+                // Send notification to user
+                sendNotification()
                 // Navigate back
                 findNavController().navigate(R.id.action_addFragment_to_listFragment)
             } else {
                 Toast.makeText(requireContext(), R.string.add_error_msg, Toast.LENGTH_SHORT).show()
             }
+        }
+    }
+
+    @SuppressLint("UnspecifiedImmutableFlag")
+    private fun sendNotification() {
+        val intent = Intent(requireContext(), MainActivity::class.java).apply {
+            flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        }
+        val pendingIntent: PendingIntent = PendingIntent.getActivity(requireContext(), 0, intent, 0)
+
+        val builder = NotificationCompat.Builder(requireContext(), Constants.CHANNEL_ID)
+            .setSmallIcon(R.drawable.ic_launcher_foreground)
+            .setContentTitle(getString(R.string.notification_title))
+            .setContentText(getString(R.string.notification_description))
+            .setStyle(
+                NotificationCompat.BigTextStyle()
+                    .bigText(getString(R.string.notification_description_long))
+            )
+            .setContentIntent(pendingIntent)
+            .setAutoCancel(true)
+            .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+
+        with(NotificationManagerCompat.from(requireContext())) {
+            notify(Constants.NOTIFICATION_ID, builder.build())
         }
     }
 
