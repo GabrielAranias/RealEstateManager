@@ -6,6 +6,7 @@ import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -41,6 +42,7 @@ class UpdateFragment : Fragment() {
         estateViewModel = ViewModelProvider(this)[EstateViewModel::class.java]
 
         initUi()
+        initDropDownMenus()
         initDateBtn()
         initFab()
 
@@ -118,6 +120,7 @@ class UpdateFragment : Fragment() {
         return !(TextUtils.isEmpty(type) && TextUtils.isEmpty(district) && price!!.isEmpty())
     }
 
+    // Set up btn to pick market entry x sale date
     private fun initDateBtn() {
         // Estate's date of market entry btn
         binding.updateEntryDate.setOnClickListener {
@@ -143,6 +146,18 @@ class UpdateFragment : Fragment() {
             }
             salePicker.show(parentFragmentManager, "Sale Date Picker")
         }
+    }
+
+    // Set up drop-down menus for estate's type x status
+    private fun initDropDownMenus() {
+        // Estate's type
+        val types = resources.getStringArray(R.array.types)
+        val typeAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, types)
+        binding.updateType.setAdapter(typeAdapter)
+        // Estate's status
+        val status = resources.getStringArray(R.array.status)
+        val statusAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, status)
+        binding.updateStatus.setAdapter(statusAdapter)
     }
 
     override fun onDestroyView() {

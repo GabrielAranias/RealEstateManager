@@ -45,4 +45,19 @@
     <string name="date_picker_sale">Select estate\'s date of sale</string>
     <string name="no_date_selected">No date selected</string>
     <string name="not_sold">Not sold yet</string>
+
+    <string-array name="types">
+        <item>Condo</item>
+        <item>Duplex</item>
+        <item>Flat</item>
+        <item>House</item>
+        <item>Loft</item>
+        <item>Mansion</item>
+        <item>Triplex</item>
+        <item>Villa</item>
+    </string-array>
+    <string-array name="status">
+        <item>Available</item>
+        <item>Sold</item>
+    </string-array>
 </resources>

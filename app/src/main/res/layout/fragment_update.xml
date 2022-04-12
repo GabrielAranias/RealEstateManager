@@ -36,7 +36,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/update_estate_headline">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -44,12 +44,11 @@
                     app:startIconDrawable="@drawable/ic_baseline_apartment_24"
                     app:startIconTint="@color/colorPrimary">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <AutoCompleteTextView
                         android:id="@+id/update_type"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
-                        android:inputType="text"
+                        android:inputType="none"
                         android:minWidth="48dp"
                         android:minHeight="48dp" />
 
@@ -350,7 +349,7 @@
                     android:id="@+id/update_district"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:imeOptions="actionNext"
+                    android:imeOptions="actionDone"
                     android:inputType="text"
                     android:minWidth="48dp"
                     android:minHeight="48dp" />
@@ -378,7 +377,7 @@
                 android:drawablePadding="6dp"
                 android:drawableTint="@color/colorPrimary"
                 android:hint="@string/add_vicinity"
-                android:imeOptions="actionNext"
+                android:imeOptions="actionDone"
                 android:inputType="text"
                 android:minWidth="48dp"
                 android:minHeight="48dp"
@@ -411,7 +410,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/update_info_headline">
 
                 <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -419,12 +418,11 @@
                     app:startIconDrawable="@drawable/ic_baseline_point_of_sale_24"
                     app:startIconTint="@color/colorPrimary">
 
-                    <com.google.android.material.textfield.TextInputEditText
+                    <AutoCompleteTextView
                         android:id="@+id/update_status"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
-                        android:inputType="text"
+                        android:inputType="none"
                         android:minWidth="48dp"
                         android:minHeight="48dp" />
 
@@ -444,7 +442,7 @@
                         android:id="@+id/update_realtor"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:imeOptions="actionNext"
+                        android:imeOptions="actionDone"
                         android:inputType="textPersonName"
                         android:minWidth="48dp"
                         android:minHeight="48dp" />
