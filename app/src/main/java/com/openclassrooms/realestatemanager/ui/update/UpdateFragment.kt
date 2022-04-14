@@ -29,6 +29,8 @@ class UpdateFragment : Fragment() {
     private val binding get() = _binding!!
     private val args by navArgs<UpdateFragmentArgs>()
     private lateinit var estateViewModel: EstateViewModel
+
+    // Date format for date picker
     private val outputDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).apply {
         timeZone = TimeZone.getTimeZone("UTC")
     }
@@ -67,6 +69,46 @@ class UpdateFragment : Fragment() {
         binding.updateCountry.setText(args.currentEstate.location.country)
         binding.updateSelectedEntryDate.text = args.currentEstate.dates.entryDate
         binding.updateSelectedSaleDate.text = args.currentEstate.dates.saleDate
+    }
+
+    // Set up drop-down menus for estate's type x status
+    private fun initDropDownMenus() {
+        // Estate's type
+        val types = resources.getStringArray(R.array.types)
+        val typeAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, types)
+        binding.updateType.setAdapter(typeAdapter)
+        // Estate's status
+        val status = resources.getStringArray(R.array.status)
+        val statusAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, status)
+        binding.updateStatus.setAdapter(statusAdapter)
+    }
+
+    // Set up btn to pick market entry x sale date
+    private fun initDateBtn() {
+        // Estate's date of market entry btn
+        binding.updateEntryDate.setOnClickListener {
+            val entryPicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText(R.string.date_picker_entry)
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build()
+            entryPicker.addOnPositiveButtonClickListener {
+                val entrySelectedDate = outputDateFormat.format(it)
+                binding.updateSelectedEntryDate.text = entrySelectedDate
+            }
+            entryPicker.show(parentFragmentManager, "Entry Date Picker")
+        }
+        // Estate's date of sale btn
+        binding.updateSaleDate.setOnClickListener {
+            val salePicker = MaterialDatePicker.Builder.datePicker()
+                .setTitleText(R.string.date_picker_sale)
+                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
+                .build()
+            salePicker.addOnPositiveButtonClickListener {
+                val saleSelectedDate = outputDateFormat.format(it)
+                binding.updateSelectedSaleDate.text = saleSelectedDate
+            }
+            salePicker.show(parentFragmentManager, "Sale Date Picker")
+        }
     }
 
     // Set up fab to update item w/ new info
@@ -118,46 +160,6 @@ class UpdateFragment : Fragment() {
 
     private fun inputCheck(type: String, district: String, price: Editable?): Boolean {
         return !(TextUtils.isEmpty(type) && TextUtils.isEmpty(district) && price!!.isEmpty())
-    }
-
-    // Set up btn to pick market entry x sale date
-    private fun initDateBtn() {
-        // Estate's date of market entry btn
-        binding.updateEntryDate.setOnClickListener {
-            val entryPicker = MaterialDatePicker.Builder.datePicker()
-                .setTitleText(R.string.date_picker_entry)
-                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-                .build()
-            entryPicker.addOnPositiveButtonClickListener {
-                val entrySelectedDate = outputDateFormat.format(it)
-                binding.updateSelectedEntryDate.text = entrySelectedDate
-            }
-            entryPicker.show(parentFragmentManager, "Entry Date Picker")
-        }
-        // Estate's date of sale btn
-        binding.updateSaleDate.setOnClickListener {
-            val salePicker = MaterialDatePicker.Builder.datePicker()
-                .setTitleText(R.string.date_picker_sale)
-                .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
-                .build()
-            salePicker.addOnPositiveButtonClickListener {
-                val saleSelectedDate = outputDateFormat.format(it)
-                binding.updateSelectedSaleDate.text = saleSelectedDate
-            }
-            salePicker.show(parentFragmentManager, "Sale Date Picker")
-        }
-    }
-
-    // Set up drop-down menus for estate's type x status
-    private fun initDropDownMenus() {
-        // Estate's type
-        val types = resources.getStringArray(R.array.types)
-        val typeAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, types)
-        binding.updateType.setAdapter(typeAdapter)
-        // Estate's status
-        val status = resources.getStringArray(R.array.status)
-        val statusAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, status)
-        binding.updateStatus.setAdapter(statusAdapter)
     }
 
     override fun onDestroyView() {

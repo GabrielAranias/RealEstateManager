@@ -8,7 +8,7 @@ android {
     compileSdkVersion 31
     defaultConfig {
         applicationId "com.openclassrooms.realestatemanager"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 31
         versionCode 1
         versionName "1.0"
@@ -52,8 +52,8 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
 
     // NAVIGATION
-    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.1'
-    implementation 'androidx.navigation:navigation-ui-ktx:2.4.1'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.4.2'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.4.2'
 
     // ROOM
     implementation("androidx.room:room-runtime:2.4.2")
@@ -69,4 +69,7 @@ dependencies {
 
     // KOTLIN COROUTINES
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
+
+    // PERMISSION MANAGER
+    implementation 'com.github.DJSeokHo:EasyPermissionManager:1.0.9'
 }
