@@ -14,10 +14,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.openclassrooms.realestatemanager.R
-import com.openclassrooms.realestatemanager.data.model.Dates
 import com.openclassrooms.realestatemanager.data.model.Estate
-import com.openclassrooms.realestatemanager.data.model.Location
-import com.openclassrooms.realestatemanager.data.model.Rooms
 import com.openclassrooms.realestatemanager.databinding.FragmentUpdateBinding
 import com.openclassrooms.realestatemanager.ui.viewModel.EstateViewModel
 import java.text.SimpleDateFormat
@@ -60,15 +57,15 @@ class UpdateFragment : Fragment() {
         binding.updateSurface.setText(args.currentEstate.surface.toString())
         binding.updateRealtor.setText(args.currentEstate.realtor)
         binding.updateStatus.setText(args.currentEstate.status)
-        binding.updateRooms.setText(args.currentEstate.rooms.nbRooms.toString())
-        binding.updateBedrooms.setText(args.currentEstate.rooms.nbBedrooms.toString())
-        binding.updateBathrooms.setText(args.currentEstate.rooms.nbBathrooms.toString())
-        binding.updateStreet.setText(args.currentEstate.location.street)
-        binding.updateCity.setText(args.currentEstate.location.city)
-        binding.updatePostalCode.setText(args.currentEstate.location.postalCode.toString())
-        binding.updateCountry.setText(args.currentEstate.location.country)
-        binding.updateSelectedEntryDate.text = args.currentEstate.dates.entryDate
-        binding.updateSelectedSaleDate.text = args.currentEstate.dates.saleDate
+        binding.updateRooms.setText(args.currentEstate.nbRooms.toString())
+        binding.updateBedrooms.setText(args.currentEstate.nbBedrooms.toString())
+        binding.updateBathrooms.setText(args.currentEstate.nbBathrooms.toString())
+        binding.updateStreet.setText(args.currentEstate.street)
+        binding.updateCity.setText(args.currentEstate.city)
+        binding.updatePostalCode.setText(args.currentEstate.postalCode.toString())
+        binding.updateCountry.setText(args.currentEstate.country)
+        binding.updateSelectedEntryDate.text = args.currentEstate.entryDate
+        binding.updateSelectedSaleDate.text = args.currentEstate.saleDate
     }
 
     // Set up drop-down menus for estate's type x status
@@ -120,21 +117,6 @@ class UpdateFragment : Fragment() {
 
             if (inputCheck(type, district, price)) {
                 // Create Estate object
-                val rooms = Rooms(
-                    nbRooms = Integer.parseInt(binding.updateRooms.text.toString()),
-                    nbBedrooms = Integer.parseInt(binding.updateBedrooms.text.toString()),
-                    nbBathrooms = Integer.parseInt(binding.updateBathrooms.text.toString())
-                )
-                val location = Location(
-                    street = binding.updateStreet.text.toString(),
-                    city = binding.updateCity.text.toString(),
-                    postalCode = Integer.parseInt(binding.updatePostalCode.text.toString()),
-                    country = binding.updateCountry.text.toString()
-                )
-                val dates = Dates(
-                    entryDate = binding.updateSelectedEntryDate.text.toString(),
-                    saleDate = binding.updateSelectedSaleDate.text.toString()
-                )
                 val updatedEstate = Estate(
                     args.currentEstate.id,
                     type,
@@ -144,9 +126,15 @@ class UpdateFragment : Fragment() {
                     surface = Integer.parseInt(binding.updateSurface.text.toString()),
                     realtor = binding.updateRealtor.text.toString(),
                     status = binding.updateStatus.text.toString(),
-                    rooms,
-                    location,
-                    dates
+                    nbRooms = Integer.parseInt(binding.updateRooms.text.toString()),
+                    nbBedrooms = Integer.parseInt(binding.updateBedrooms.text.toString()),
+                    nbBathrooms = Integer.parseInt(binding.updateBathrooms.text.toString()),
+                    street = binding.updateStreet.text.toString(),
+                    city = binding.updateCity.text.toString(),
+                    postalCode = Integer.parseInt(binding.updatePostalCode.text.toString()),
+                    country = binding.updateCountry.text.toString(),
+                    entryDate = binding.updateSelectedEntryDate.text.toString(),
+                    saleDate = binding.updateSelectedSaleDate.text.toString()
                 )
                 // Update current Estate
                 estateViewModel.updateEstate(updatedEstate)

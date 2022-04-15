@@ -25,10 +25,7 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.openclassrooms.realestatemanager.R
-import com.openclassrooms.realestatemanager.data.model.Dates
 import com.openclassrooms.realestatemanager.data.model.Estate
-import com.openclassrooms.realestatemanager.data.model.Location
-import com.openclassrooms.realestatemanager.data.model.Rooms
 import com.openclassrooms.realestatemanager.databinding.FragmentAddBinding
 import com.openclassrooms.realestatemanager.ui.main.MainActivity
 import com.openclassrooms.realestatemanager.ui.viewModel.EstateViewModel
@@ -180,21 +177,6 @@ class AddFragment : Fragment() {
 
             if (inputCheck(type, district, price)) {
                 // Create Estate object
-                val rooms = Rooms(
-                    nbRooms = Integer.parseInt(binding.addRooms.text.toString()),
-                    nbBedrooms = Integer.parseInt(binding.addBedrooms.text.toString()),
-                    nbBathrooms = Integer.parseInt(binding.addBathrooms.text.toString())
-                )
-                val location = Location(
-                    street = binding.addStreet.text.toString(),
-                    city = binding.addCity.text.toString(),
-                    postalCode = Integer.parseInt(binding.addPostalCode.text.toString()),
-                    country = binding.addCountry.text.toString()
-                )
-                val dates = Dates(
-                    entryDate = binding.addSelectedEntryDate.text.toString(),
-                    saleDate = binding.addSelectedSaleDate.text.toString()
-                )
                 val estate = Estate(
                     0,
                     type,
@@ -204,9 +186,15 @@ class AddFragment : Fragment() {
                     surface = Integer.parseInt(binding.addSurface.text.toString()),
                     realtor = binding.addRealtor.text.toString(),
                     status = binding.addStatus.text.toString(),
-                    rooms,
-                    location,
-                    dates
+                    nbRooms = Integer.parseInt(binding.addRooms.text.toString()),
+                    nbBedrooms = Integer.parseInt(binding.addBedrooms.text.toString()),
+                    nbBathrooms = Integer.parseInt(binding.addBathrooms.text.toString()),
+                    street = binding.addStreet.text.toString(),
+                    city = binding.addCity.text.toString(),
+                    postalCode = Integer.parseInt(binding.addPostalCode.text.toString()),
+                    country = binding.addCountry.text.toString(),
+                    entryDate = binding.addSelectedEntryDate.text.toString(),
+                    saleDate = binding.addSelectedSaleDate.text.toString()
                 )
                 // Add data to db
                 estateViewModel.addEstate(estate)

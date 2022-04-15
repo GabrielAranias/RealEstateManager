@@ -44,27 +44,27 @@ class DetailFragment : Fragment() {
         binding.detailRooms.text =
             requireContext().getString(
                 R.string.detail_rooms,
-                args.currentEstate.rooms.nbRooms.toString()
+                args.currentEstate.nbRooms.toString()
             )
         binding.detailBedrooms.text =
             requireContext().getString(
                 R.string.detail_bedrooms,
-                args.currentEstate.rooms.nbBedrooms.toString()
+                args.currentEstate.nbBedrooms.toString()
             )
         binding.detailBathrooms.text =
             requireContext().getString(
                 R.string.detail_bathrooms,
-                args.currentEstate.rooms.nbBathrooms.toString()
+                args.currentEstate.nbBathrooms.toString()
             )
-        binding.detailStreet.text = args.currentEstate.location.street
-        binding.detailCity.text = args.currentEstate.location.city
-        binding.detailPostalCode.text = args.currentEstate.location.postalCode.toString()
-        binding.detailCountry.text = args.currentEstate.location.country
+        binding.detailStreet.text = args.currentEstate.street
+        binding.detailCity.text = args.currentEstate.city
+        binding.detailPostalCode.text = args.currentEstate.postalCode.toString()
+        binding.detailCountry.text = args.currentEstate.country
         binding.detailEntryDate.text = requireContext().getString(
-            R.string.detail_entry_date, args.currentEstate.dates.entryDate
+            R.string.detail_entry_date, args.currentEstate.entryDate
         )
         binding.detailSaleDate.text = requireContext().getString(
-            R.string.detail_sale_date, args.currentEstate.dates.saleDate
+            R.string.detail_sale_date, args.currentEstate.saleDate
         )
     }
 
@@ -80,9 +80,15 @@ class DetailFragment : Fragment() {
                 args.currentEstate.surface,
                 args.currentEstate.realtor,
                 args.currentEstate.status,
-                args.currentEstate.rooms,
-                args.currentEstate.location,
-                args.currentEstate.dates
+                args.currentEstate.nbRooms,
+                args.currentEstate.nbBedrooms,
+                args.currentEstate.nbBathrooms,
+                args.currentEstate.street,
+                args.currentEstate.city,
+                args.currentEstate.postalCode,
+                args.currentEstate.country,
+                args.currentEstate.entryDate,
+                args.currentEstate.saleDate
             )
             val action =
                 DetailFragmentDirections.actionDetailFragmentToUpdateFragment(currentEstate)
