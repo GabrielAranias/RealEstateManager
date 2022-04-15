@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.ui.add
+package com.openclassrooms.realestatemanager.ui.fragment.add
 
 import android.Manifest
 import android.app.PendingIntent

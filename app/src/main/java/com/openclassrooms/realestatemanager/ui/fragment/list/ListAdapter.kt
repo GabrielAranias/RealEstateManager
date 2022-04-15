@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager.ui.list
+package com.openclassrooms.realestatemanager.ui.fragment.list
 
 import android.annotation.SuppressLint
 import android.content.Context

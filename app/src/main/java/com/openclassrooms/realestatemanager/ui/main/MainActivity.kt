@@ -10,7 +10,9 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavDeepLinkBuilder
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.openclassrooms.realestatemanager.R
 import com.openclassrooms.realestatemanager.databinding.ActivityMainBinding
 import com.openclassrooms.realestatemanager.utils.Constants
@@ -25,11 +27,24 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment_container)
-        val navController = navHostFragment?.findNavController()
-        setupActionBarWithNavController(navController!!)
+        val navController = navHostFragment!!.findNavController()
+        val appBarConfiguration = AppBarConfiguration(
+            setOf(
+                R.id.listFragment,
+                R.id.mapFragment,
+                R.id.searchFragment,
+                R.id.simFragment
+            )
+        )
+
+        // Set up action bar
+        setupActionBarWithNavController(navController, appBarConfiguration)
+        // Set up bottom navigation bar
+        binding.mainBottomNavigation.setupWithNavController(navController)
 
         createNotificationChannel()
     }
+
 
     // Create notification channel so that user receives notification after creating new estate
     private fun createNotificationChannel() {

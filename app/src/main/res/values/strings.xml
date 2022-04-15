@@ -55,6 +55,10 @@
     <string name="photo_permission_title">Photo permission</string>
     <string name="photo_permission_message">Photo permission is necessary for you to upload pictures</string>
     <string name="photo_permission_btn_title">Settings</string>
+    <string name="bn_list">List</string>
+    <string name="bn_map">Map</string>
+    <string name="bn_search">Search</string>
+    <string name="bn_sim">Sim</string>
 
     <string-array name="types">
         <item>Condo</item>

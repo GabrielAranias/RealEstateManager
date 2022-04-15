@@ -6,7 +6,7 @@
     app:startDestination="@id/listFragment">
     <fragment
         android:id="@+id/addFragment"
-        android:name="com.openclassrooms.realestatemanager.ui.add.AddFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.add.AddFragment"
         android:label="@string/add_fragment_label"
         tools:layout="@layout/fragment_add" >
         <action
@@ -15,7 +15,7 @@
     </fragment>
     <fragment
         android:id="@+id/updateFragment"
-        android:name="com.openclassrooms.realestatemanager.ui.update.UpdateFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.update.UpdateFragment"
         android:label="@string/update_fragment_label"
         tools:layout="@layout/fragment_update" >
         <argument
@@ -27,7 +27,7 @@
     </fragment>
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.openclassrooms.realestatemanager.ui.detail.DetailFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.detail.DetailFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_detail" >
         <argument
@@ -39,11 +39,26 @@
     </fragment>
     <fragment
         android:id="@+id/listFragment"
-        android:name="com.openclassrooms.realestatemanager.ui.list.ListFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.list.ListFragment"
         android:label="@string/app_name"
         tools:layout="@layout/fragment_list" >
         <action
             android:id="@+id/action_listFragment_to_detailFragment"
             app:destination="@id/detailFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/mapFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.map.MapFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_map" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.search.SearchFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/simFragment"
+        android:name="com.openclassrooms.realestatemanager.ui.fragment.sim.SimFragment"
+        android:label="@string/app_name"
+        tools:layout="@layout/fragment_sim" />
 </navigation>
