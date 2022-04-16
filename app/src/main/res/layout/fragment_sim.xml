@@ -1,8 +1,600 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorSecondary"
     tools:context=".ui.fragment.sim.SimFragment">
 
-</FrameLayout>
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sim_guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="21dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sim_guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="97dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sim_guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="144dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sim_guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="186dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sim_guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="245dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sim_guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="304dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sim_guideline7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="365dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sim_guideline8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="426dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sim_guideline9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="487dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/sim_guideline10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="550dp" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/sim_leftColumn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:barrierDirection="end"
+        app:constraint_referenced_ids="sim_interest_rate, sim_loan_amount"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/sim_loan_amount"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/sim_loan_amount"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sim_loan_amount_layout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <TextView
+        android:id="@+id/sim_year_5"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sim_5"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sim_emi_year_5_layout"
+        app:layout_constraintEnd_toEndOf="@+id/sim_years"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/sim_years"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline4"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/sim_year_10"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sim_10"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sim_emi_year_10_layout"
+        app:layout_constraintEnd_toEndOf="@+id/sim_years"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/sim_years"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline5"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/sim_year_15"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sim_15"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sim_emi_year_15_layout"
+        app:layout_constraintEnd_toEndOf="@+id/sim_years"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/sim_years"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline6"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/sim_year_20"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sim_20"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sim_emi_year_20_layout"
+        app:layout_constraintEnd_toEndOf="@+id/sim_years"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/sim_years"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline7"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/sim_year_25"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sim_25"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sim_emi_year_25_layout"
+        app:layout_constraintEnd_toEndOf="@+id/sim_years"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/sim_years"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline8"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/sim_year_30"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sim_30"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sim_emi_year_30_layout"
+        app:layout_constraintEnd_toEndOf="@+id/sim_years"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/sim_years"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline9"
+        app:layout_constraintVertical_bias="0.5" />
+
+    <TextView
+        android:id="@+id/sim_interest_rate"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/sim_interest_rate"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="@+id/sim_interest_rate_sb"
+        app:layout_constraintEnd_toStartOf="@+id/sim_interest_rate_sb"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline2"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintWidth_percent="0.3" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_loan_amount_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:endIconMode="clear_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.471"
+        app:layout_constraintStart_toEndOf="@+id/sim_leftColumn"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline"
+        app:layout_constraintWidth_percent="0.4">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_loan_amount_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_emi_year_5_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/sim_total_year_5_layout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_leftColumn"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline4"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_emi_year_5_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_emi_year_10_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/sim_total_year_10_layout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_leftColumn"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline5"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_emi_year_10_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_emi_year_15_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/sim_total_year_15_layout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_leftColumn"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline6"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_emi_year_15_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_emi_year_20_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/sim_total_year_20_layout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_leftColumn"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline7"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_emi_year_20_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_emi_year_25_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/sim_total_year_25_layout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_leftColumn"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline8"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_emi_year_25_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_emi_year_30_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toStartOf="@+id/sim_total_year_30_layout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_leftColumn"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline9"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_emi_year_30_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_total_year_5_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_emi_year_5_layout"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline4"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_total_year_5_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_total_year_10_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_emi_year_10_layout"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline5"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_total_year_10_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_total_year_15_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_emi_year_15_layout"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline6"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_total_year_15_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_total_year_20_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_emi_year_20_layout"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline7"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_total_year_20_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_total_year_25_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_emi_year_25_layout"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline8"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_total_year_25_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/sim_total_year_30_layout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/sim_emi_year_30_layout"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline9"
+        app:layout_constraintWidth_percent="0.3">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/sim_total_year_30_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:clickable="false"
+            android:cursorVisible="false"
+            android:focusable="false"
+            android:inputType="numberDecimal"
+            android:minWidth="48dp"
+            android:minHeight="48dp"
+            android:text="@string/sim_0"
+            android:textAlignment="center" />
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <SeekBar
+        android:id="@+id/sim_interest_rate_sb"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:max="100"
+        android:progress="5"
+        app:layout_constraintBottom_toTopOf="@+id/sim_guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/sim_interest_percent"
+        app:layout_constraintStart_toEndOf="@+id/sim_leftColumn"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline2"
+        app:layout_constraintWidth_percent="0.65" />
+
+    <TextView
+        android:id="@+id/sim_interest_percent"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:text="@string/sim_5p"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sim_guideline3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline2" />
+
+    <TextView
+        android:id="@+id/sim_years"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/sim_years"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sim_guideline4"
+        app:layout_constraintEnd_toStartOf="@+id/sim_emi"
+        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/sim_interest_rate"
+        app:layout_constraintVertical_bias="0.705" />
+
+    <TextView
+        android:id="@+id/sim_emi"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sim_emi"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sim_guideline4"
+        app:layout_constraintEnd_toEndOf="@+id/sim_emi_year_5_layout"
+        app:layout_constraintStart_toStartOf="@+id/sim_emi_year_5_layout"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline3" />
+
+    <TextView
+        android:id="@+id/sim_total_amount"
+        style="@style/TextAppearance.MaterialComponents.Body1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/sim_total_amount"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/sim_guideline4"
+        app:layout_constraintEnd_toEndOf="@+id/sim_total_year_5_layout"
+        app:layout_constraintStart_toStartOf="@+id/sim_total_year_5_layout"
+        app:layout_constraintTop_toTopOf="@+id/sim_guideline3" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
