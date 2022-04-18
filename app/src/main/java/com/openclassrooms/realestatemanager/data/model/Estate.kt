@@ -27,7 +27,8 @@ data class Estate(
     var postalCode: Int,
     var country: String,
     var entryDate: String,
-    var saleDate: String
+    var saleDate: String,
+    var vicinity: ArrayList<String>
 ) : Parcelable {
 
     constructor() : this(
@@ -47,7 +48,8 @@ data class Estate(
         0,
         "",
         "",
-        ""
+        "",
+        listOf("") as ArrayList<String>
     )
 
     // --- FOR CONTENT PROVIDER ---
@@ -87,6 +89,8 @@ data class Estate(
                 values.getAsString(Constants.ENTRY_DATE)
             if (values.containsKey(Constants.SALE_DATE)) estate.saleDate =
                 values.getAsString(Constants.SALE_DATE)
+            if (values.containsKey(Constants.VICINITY)) estate.vicinity =
+                listOf(values.getAsString(Constants.VICINITY)) as ArrayList<String>
             return estate
         }
     }

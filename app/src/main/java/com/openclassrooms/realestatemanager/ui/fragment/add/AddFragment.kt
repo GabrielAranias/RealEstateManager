@@ -23,6 +23,7 @@ import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.openclassrooms.realestatemanager.R
 import com.openclassrooms.realestatemanager.data.model.Estate
@@ -40,6 +41,7 @@ class AddFragment : Fragment() {
     private var _binding: FragmentAddBinding? = null
     private val binding get() = _binding!!
     private lateinit var estateViewModel: EstateViewModel
+    private val vicinity = ArrayList<String>()
 
     // Date format for date picker
     private val outputDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).apply {
@@ -74,6 +76,7 @@ class AddFragment : Fragment() {
         easyPermissionManager = EasyPermissionManager(requireContext() as ComponentActivity)
 
         initDropDownMenus()
+        initChipGroup()
         initDateBtn()
         initPhotoHandling()
         initFab()
@@ -91,6 +94,28 @@ class AddFragment : Fragment() {
         val status = resources.getStringArray(R.array.status)
         val statusAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, status)
         binding.addStatus.setAdapter(statusAdapter)
+    }
+
+    // Set up chip group to select POIs
+    private fun initChipGroup() {
+        binding.addVicinityBtn.setOnClickListener {
+            if (binding.addVicinity.toString().isNotEmpty()) {
+                addChip(binding.addVicinity.text.toString())
+                binding.addVicinity.setText("")
+            }
+        }
+    }
+
+    private fun addChip(text: String) {
+        val chip = Chip(requireContext())
+        chip.text = text
+        chip.isCloseIconVisible = true
+        binding.addChipGroup.addView(chip)
+        vicinity.add(text)
+        chip.setOnCloseIconClickListener {
+            binding.addChipGroup.removeView(chip)
+            vicinity.remove(text)
+        }
     }
 
     // Set up btn to pick market entry x sale date
@@ -194,7 +219,8 @@ class AddFragment : Fragment() {
                     postalCode = Integer.parseInt(binding.addPostalCode.text.toString()),
                     country = binding.addCountry.text.toString(),
                     entryDate = binding.addSelectedEntryDate.text.toString(),
-                    saleDate = binding.addSelectedSaleDate.text.toString()
+                    saleDate = binding.addSelectedSaleDate.text.toString(),
+                    vicinity
                 )
                 // Add data to db
                 estateViewModel.addEstate(estate)

@@ -207,13 +207,26 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/detail_vicinity_headline">
 
-                <TextView
-                    android:id="@+id/detail_vicinity"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="8dp"
-                    android:text="@string/add_vicinity"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/detail_vicinity_intro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="@string/detail_vicinity"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                    <TextView
+                        android:id="@+id/detail_vicinity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"/>
+
+                </LinearLayout>
 
             </androidx.cardview.widget.CardView>
 

@@ -66,6 +66,7 @@ class DetailFragment : Fragment() {
         binding.detailSaleDate.text = requireContext().getString(
             R.string.detail_sale_date, args.currentEstate.saleDate
         )
+        binding.detailVicinity.text = args.currentEstate.vicinity.joinToString(", ")
     }
 
     // Set up fab to navigate to UpdateFragment on click
@@ -88,7 +89,8 @@ class DetailFragment : Fragment() {
                 args.currentEstate.postalCode,
                 args.currentEstate.country,
                 args.currentEstate.entryDate,
-                args.currentEstate.saleDate
+                args.currentEstate.saleDate,
+                args.currentEstate.vicinity
             )
             val action =
                 DetailFragmentDirections.actionDetailFragmentToUpdateFragment(currentEstate)

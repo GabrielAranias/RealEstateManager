@@ -41,6 +41,7 @@
     <string name="detail_status">Status: %1$s</string>
     <string name="detail_entry_date">Market entry: %1$s</string>
     <string name="detail_sale_date">Date of sale: %1$s</string>
+    <string name="detail_vicinity">Points of interest in the vicinity:</string>
     <string name="date_picker_entry">Select estate\'s date of market entry</string>
     <string name="date_picker_sale">Select estate\'s date of sale</string>
     <string name="no_date_selected">No date selected</string>

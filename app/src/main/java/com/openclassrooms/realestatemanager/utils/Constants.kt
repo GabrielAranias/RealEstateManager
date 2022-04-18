@@ -21,6 +21,7 @@ object Constants {
     const val COUNTRY = "country"
     const val ENTRY_DATE = "entry_date"
     const val SALE_DATE = "sale_date"
+    const val VICINITY = "vicinity"
 
     const val LOAN_AMOUNT = "loan_amount"
     const val INTEREST_RATE = "interest_rate"

@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.google.android.material.chip.Chip
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.openclassrooms.realestatemanager.R
 import com.openclassrooms.realestatemanager.data.model.Estate
@@ -26,6 +27,7 @@ class UpdateFragment : Fragment() {
     private val binding get() = _binding!!
     private val args by navArgs<UpdateFragmentArgs>()
     private lateinit var estateViewModel: EstateViewModel
+    private var vicinity = ArrayList<String>()
 
     // Date format for date picker
     private val outputDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).apply {
@@ -42,6 +44,7 @@ class UpdateFragment : Fragment() {
 
         initUi()
         initDropDownMenus()
+        initChipGroup()
         initDateBtn()
         initFab()
 
@@ -66,6 +69,22 @@ class UpdateFragment : Fragment() {
         binding.updateCountry.setText(args.currentEstate.country)
         binding.updateSelectedEntryDate.text = args.currentEstate.entryDate
         binding.updateSelectedSaleDate.text = args.currentEstate.saleDate
+        // Get POI chips
+        getChips()
+    }
+
+    private fun getChips() {
+        vicinity = args.currentEstate.vicinity
+        for (value in vicinity) {
+            val chip = Chip(requireContext())
+            chip.text = value
+            chip.isCloseIconVisible = true
+            binding.updateChipGroup.addView(chip)
+            chip.setOnCloseIconClickListener {
+                binding.updateChipGroup.removeView(chip)
+                vicinity.remove(value)
+            }
+        }
     }
 
     // Set up drop-down menus for estate's type x status
@@ -78,6 +97,28 @@ class UpdateFragment : Fragment() {
         val status = resources.getStringArray(R.array.status)
         val statusAdapter = ArrayAdapter(requireContext(), R.layout.dropdown_item, status)
         binding.updateStatus.setAdapter(statusAdapter)
+    }
+
+    // Set up chip group to select POIs
+    private fun initChipGroup() {
+        binding.updateVicinityBtn.setOnClickListener {
+            if (binding.updateVicinity.toString().isNotEmpty()) {
+                addChip(binding.updateVicinity.text.toString())
+                binding.updateVicinity.setText("")
+            }
+        }
+    }
+
+    private fun addChip(text: String) {
+        val chip = Chip(requireContext())
+        chip.text = text
+        chip.isCloseIconVisible = true
+        binding.updateChipGroup.addView(chip)
+        vicinity.add(text)
+        chip.setOnCloseIconClickListener {
+            binding.updateChipGroup.removeView(chip)
+            vicinity.remove(text)
+        }
     }
 
     // Set up btn to pick market entry x sale date
@@ -134,7 +175,8 @@ class UpdateFragment : Fragment() {
                     postalCode = Integer.parseInt(binding.updatePostalCode.text.toString()),
                     country = binding.updateCountry.text.toString(),
                     entryDate = binding.updateSelectedEntryDate.text.toString(),
-                    saleDate = binding.updateSelectedSaleDate.text.toString()
+                    saleDate = binding.updateSelectedSaleDate.text.toString(),
+                    vicinity
                 )
                 // Update current Estate
                 estateViewModel.updateEstate(updatedEstate)
