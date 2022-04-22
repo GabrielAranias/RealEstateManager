@@ -63,10 +63,7 @@ class UpdateFragment : Fragment() {
         binding.updateRooms.setText(args.currentEstate.nbRooms.toString())
         binding.updateBedrooms.setText(args.currentEstate.nbBedrooms.toString())
         binding.updateBathrooms.setText(args.currentEstate.nbBathrooms.toString())
-        binding.updateStreet.setText(args.currentEstate.street)
-        binding.updateCity.setText(args.currentEstate.city)
-        binding.updatePostalCode.setText(args.currentEstate.postalCode.toString())
-        binding.updateCountry.setText(args.currentEstate.country)
+        binding.updateAddress.setText(args.currentEstate.address)
         binding.updateSelectedEntryDate.text = args.currentEstate.entryDate
         binding.updateSelectedSaleDate.text = args.currentEstate.saleDate
         // Get POI chips
@@ -170,10 +167,7 @@ class UpdateFragment : Fragment() {
                     nbRooms = Integer.parseInt(binding.updateRooms.text.toString()),
                     nbBedrooms = Integer.parseInt(binding.updateBedrooms.text.toString()),
                     nbBathrooms = Integer.parseInt(binding.updateBathrooms.text.toString()),
-                    street = binding.updateStreet.text.toString(),
-                    city = binding.updateCity.text.toString(),
-                    postalCode = Integer.parseInt(binding.updatePostalCode.text.toString()),
-                    country = binding.updateCountry.text.toString(),
+                    address = binding.updateAddress.text.toString(),
                     entryDate = binding.updateSelectedEntryDate.text.toString(),
                     saleDate = binding.updateSelectedSaleDate.text.toString(),
                     vicinity

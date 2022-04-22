@@ -214,10 +214,7 @@ class AddFragment : Fragment() {
                     nbRooms = Integer.parseInt(binding.addRooms.text.toString()),
                     nbBedrooms = Integer.parseInt(binding.addBedrooms.text.toString()),
                     nbBathrooms = Integer.parseInt(binding.addBathrooms.text.toString()),
-                    street = binding.addStreet.text.toString(),
-                    city = binding.addCity.text.toString(),
-                    postalCode = Integer.parseInt(binding.addPostalCode.text.toString()),
-                    country = binding.addCountry.text.toString(),
+                    address = binding.addAddress.text.toString(),
                     entryDate = binding.addSelectedEntryDate.text.toString(),
                     saleDate = binding.addSelectedSaleDate.text.toString(),
                     vicinity

@@ -22,10 +22,7 @@ data class Estate(
     var nbRooms: Int,
     var nbBedrooms: Int,
     var nbBathrooms: Int,
-    var street: String,
-    var city: String,
-    var postalCode: Int,
-    var country: String,
+    var address: String,
     var entryDate: String,
     var saleDate: String,
     var vicinity: ArrayList<String>
@@ -42,9 +39,6 @@ data class Estate(
         "",
         0,
         0,
-        0,
-        "",
-        "",
         0,
         "",
         "",
@@ -77,14 +71,8 @@ data class Estate(
                 values.getAsInteger(Constants.NB_BEDROOMS)
             if (values.containsKey(Constants.NB_BATHROOMS)) estate.nbBathrooms =
                 values.getAsInteger(Constants.NB_BATHROOMS)
-            if (values.containsKey(Constants.STREET)) estate.street =
-                values.getAsString(Constants.STREET)
-            if (values.containsKey(Constants.CITY)) estate.city =
-                values.getAsString(Constants.CITY)
-            if (values.containsKey(Constants.POSTAL_CODE)) estate.postalCode =
-                values.getAsInteger(Constants.POSTAL_CODE)
-            if (values.containsKey(Constants.COUNTRY)) estate.country =
-                values.getAsString(Constants.COUNTRY)
+            if (values.containsKey(Constants.ADDRESS)) estate.address =
+                values.getAsString(Constants.ADDRESS)
             if (values.containsKey(Constants.ENTRY_DATE)) estate.entryDate =
                 values.getAsString(Constants.ENTRY_DATE)
             if (values.containsKey(Constants.SALE_DATE)) estate.saleDate =
