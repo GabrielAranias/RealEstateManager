@@ -121,4 +121,9 @@ class SimFragment : Fragment() {
         override fun afterTextChanged(editable: Editable?) {
         }
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }

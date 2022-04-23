@@ -153,7 +153,7 @@ class AddFragment : Fragment() {
             easyPermissionManager.requestPermission(
                 getString(R.string.photo_permission_title),
                 getString(R.string.photo_permission_message),
-                getString(R.string.photo_permission_btn_title),
+                getString(R.string.permission_btn_title),
                 arrayOf(
                     Manifest.permission.CAMERA,
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
@@ -176,7 +176,7 @@ class AddFragment : Fragment() {
             easyPermissionManager.requestPermission(
                 getString(R.string.photo_permission_title),
                 getString(R.string.photo_permission_message),
-                getString(R.string.photo_permission_btn_title),
+                getString(R.string.permission_btn_title),
                 arrayOf(
                     Manifest.permission.WRITE_EXTERNAL_STORAGE,
                     Manifest.permission.READ_EXTERNAL_STORAGE

@@ -1,11 +1,10 @@
 package com.openclassrooms.realestatemanager.ui.fragment.search
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.openclassrooms.realestatemanager.databinding.FragmentMapBinding
+import androidx.fragment.app.Fragment
 import com.openclassrooms.realestatemanager.databinding.FragmentSearchBinding
 
 class SearchFragment : Fragment() {
@@ -19,5 +18,10 @@ class SearchFragment : Fragment() {
     ): View {
         _binding = FragmentSearchBinding.inflate(inflater, container, false)
         return binding.root
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

@@ -20,6 +20,9 @@ object Constants {
     const val SALE_DATE = "sale_date"
     const val VICINITY = "vicinity"
 
+    const val CAMERA_POSITION = "camera_position"
+    const val LOCATION = "location"
+
     const val LOAN_AMOUNT = "loan_amount"
     const val INTEREST_RATE = "interest_rate"
 }
