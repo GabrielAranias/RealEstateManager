@@ -12,8 +12,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.EditText
 import android.widget.Toast
 import androidx.annotation.RequiresApi
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
 import androidx.fragment.app.Fragment
@@ -39,6 +41,7 @@ class AddFragment : Fragment() {
     private lateinit var estateViewModel: EstateViewModel
     private val vicinity = ArrayList<String>()
     private val photoUris = ArrayList<Uri>()
+    private val photoCaptions = ArrayList<String>()
     private lateinit var adapter: GridAdapter
     private lateinit var imagePicker: ImagePicker
 
@@ -131,7 +134,7 @@ class AddFragment : Fragment() {
     private fun initPhotoHandling() {
         // Init RecyclerView
         val recyclerView = binding.addPhotoList
-        adapter = GridAdapter(photoUris, requireContext())
+        adapter = GridAdapter(photoUris, photoCaptions, requireContext())
         recyclerView.adapter = adapter
         // Camera btn
         binding.addPhotoCamera.setOnClickListener {
@@ -151,9 +154,18 @@ class AddFragment : Fragment() {
     private fun imageCallback(imageResult: ImageResult<Uri>) {
         when (imageResult) {
             is ImageResult.Success -> {
-                val uri = imageResult.value
-                photoUris.add(uri)
-                adapter.notifyDataSetChanged()
+                val builder = AlertDialog.Builder(requireContext())
+                val editText = EditText(context)
+                builder.setTitle(R.string.alert_dialog_title)
+                    .setView(editText)
+                    .setPositiveButton(R.string.toolbar_add) { _, _ ->
+                        // Add photo w/ caption
+                        val uri = imageResult.value
+                        photoUris.add(uri)
+                        photoCaptions.add(editText.text.toString())
+                        adapter.notifyDataSetChanged()
+                    }
+                    .show()
             }
             is ImageResult.Failure -> {
                 val errorString = imageResult.errorString

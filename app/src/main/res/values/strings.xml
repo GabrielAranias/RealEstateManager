@@ -68,6 +68,7 @@
     <string name="sim_30">30</string>
     <string name="sim_5p">5%</string>
     <string name="sim_percent">%s%%</string>
+    <string name="alert_dialog_title">Add a photo caption</string>
 
     <string-array name="types">
         <item>Condo</item>

@@ -8,8 +8,17 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.openclassrooms.realestatemanager.databinding.PhotoItemBinding
 
-class GridAdapter(private var photoUris: ArrayList<Uri>, private var context: Context) :
+class GridAdapter(
+    private val uris: ArrayList<Uri>,
+    private val captions: ArrayList<String>,
+    private val context: Context
+) :
     RecyclerView.Adapter<GridAdapter.GridViewHolder>() {
+
+    companion object {
+        const val URI = 0
+        const val CAPTION = 0
+    }
 
     class GridViewHolder(val binding: PhotoItemBinding) : RecyclerView.ViewHolder(binding.root)
 
@@ -20,22 +29,26 @@ class GridAdapter(private var photoUris: ArrayList<Uri>, private var context: Co
     }
 
     override fun onBindViewHolder(holder: GridViewHolder, position: Int) {
-        // Display photo
-        Glide.with(context)
-            .load(photoUris[position])
-            .centerCrop()
-            .into(holder.binding.photoImage)
         holder.binding.apply {
+            // Display photo
+            Glide.with(context)
+                .load(uris[position])
+                .centerCrop()
+                .into(photoImage)
+            // Set caption
+            photoCaption.text = captions[position]
             // Remove item
             photoDeleteBtn.setOnClickListener {
-                photoUris.removeAt(holder.adapterPosition)
+                uris.removeAt(holder.adapterPosition)
+                captions.removeAt(holder.adapterPosition)
                 notifyItemRemoved(position)
-                notifyItemRangeChanged(position, photoUris.size)
+                notifyItemRangeChanged(position, uris.size)
+                notifyItemRangeChanged(position, captions.size)
             }
         }
     }
 
     override fun getItemCount(): Int {
-        return photoUris.size
+        return uris.size
     }
 }
