@@ -9,9 +9,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/estate_list"
-        android:layout_width="300dp"
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_gravity="start"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/estate_item" />
 

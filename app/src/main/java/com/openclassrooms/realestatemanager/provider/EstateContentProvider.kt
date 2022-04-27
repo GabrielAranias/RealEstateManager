@@ -11,7 +11,7 @@ import com.openclassrooms.realestatemanager.data.model.Estate
 class EstateContentProvider : ContentProvider() {
 
     companion object {
-        const val AUTHORITY = "com.openclassrooms.realestatemanager.provider.data"
+        const val AUTHORITY = "com.openclassrooms.realestatemanager.provider"
         val URI_ITEM: Uri = Uri.parse("content://$AUTHORITY/estate")
     }
 

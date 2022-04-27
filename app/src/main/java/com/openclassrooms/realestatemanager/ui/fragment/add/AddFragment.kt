@@ -1,12 +1,11 @@
 package com.openclassrooms.realestatemanager.ui.fragment.add
 
-import android.Manifest
+import android.annotation.SuppressLint
 import android.app.PendingIntent
 import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.os.Environment
 import android.text.Editable
 import android.text.TextUtils
 import android.view.LayoutInflater
@@ -14,12 +13,9 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Toast
-import androidx.activity.ComponentActivity
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.app.NotificationManagerCompat
-import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -31,8 +27,8 @@ import com.openclassrooms.realestatemanager.databinding.FragmentAddBinding
 import com.openclassrooms.realestatemanager.ui.main.MainActivity
 import com.openclassrooms.realestatemanager.ui.viewModel.EstateViewModel
 import com.openclassrooms.realestatemanager.utils.Constants
-import com.swein.easypermissionmanager.EasyPermissionManager
-import java.io.File
+import dev.ronnie.github.imagepicker.ImagePicker
+import dev.ronnie.github.imagepicker.ImageResult
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -42,29 +38,14 @@ class AddFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var estateViewModel: EstateViewModel
     private val vicinity = ArrayList<String>()
+    private val photoUris = ArrayList<Uri>()
+    private lateinit var adapter: GridAdapter
+    private lateinit var imagePicker: ImagePicker
 
     // Date format for date picker
     private val outputDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).apply {
         timeZone = TimeZone.getTimeZone("UTC")
     }
-
-    private lateinit var easyPermissionManager: EasyPermissionManager
-
-    // Contract for picking photo in gallery
-    private val galleryLauncher = registerForActivityResult(ActivityResultContracts.GetContent()) {
-        binding.addPhoto.setImageURI(it)
-    }
-
-    private var tempImageUri: Uri? = null
-    private var tempImageFilePath = ""
-
-    // Contract for taking picture w/ camera
-    private val cameraLauncher =
-        registerForActivityResult(ActivityResultContracts.TakePicture()) { success ->
-            if (success) {
-                binding.addPhoto.setImageURI(tempImageUri)
-            }
-        }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -73,7 +54,7 @@ class AddFragment : Fragment() {
         _binding = FragmentAddBinding.inflate(inflater, container, false)
 
         estateViewModel = ViewModelProvider(this)[EstateViewModel::class.java]
-        easyPermissionManager = EasyPermissionManager(requireContext() as ComponentActivity)
+        imagePicker = ImagePicker(this)
 
         initDropDownMenus()
         initChipGroup()
@@ -148,49 +129,37 @@ class AddFragment : Fragment() {
 
     // Set up btn to pick photo in gallery or take picture w/ camera
     private fun initPhotoHandling() {
+        // Init RecyclerView
+        val recyclerView = binding.addPhotoList
+        adapter = GridAdapter(photoUris, requireContext())
+        recyclerView.adapter = adapter
         // Camera btn
         binding.addPhotoCamera.setOnClickListener {
-            easyPermissionManager.requestPermission(
-                getString(R.string.photo_permission_title),
-                getString(R.string.photo_permission_message),
-                getString(R.string.permission_btn_title),
-                arrayOf(
-                    Manifest.permission.CAMERA,
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                )
-            ) {
-                // After permission is granted
-                tempImageUri = FileProvider.getUriForFile(
-                    requireContext(),
-                    "com.openclassrooms.realestatemanager.provider",
-                    createImageFile().also {
-                        tempImageFilePath = it.absolutePath
-                    }
-                )
-                cameraLauncher.launch(tempImageUri)
+            imagePicker.takeFromCamera { imageResult ->
+                imageCallback(imageResult)
             }
         }
         // Gallery btn
         binding.addPhotoGallery.setOnClickListener {
-            easyPermissionManager.requestPermission(
-                getString(R.string.photo_permission_title),
-                getString(R.string.photo_permission_message),
-                getString(R.string.permission_btn_title),
-                arrayOf(
-                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
-                    Manifest.permission.READ_EXTERNAL_STORAGE
-                )
-            ) {
-                // After permission is granted
-                galleryLauncher.launch("image/*")
+            imagePicker.pickFromStorage { imageResult ->
+                imageCallback(imageResult)
             }
         }
     }
 
-    private fun createImageFile(): File {
-        val storageDir = requireContext().getExternalFilesDir(Environment.DIRECTORY_PICTURES)
-        return File.createTempFile("temp_image", ".jpg", storageDir)
+    @SuppressLint("NotifyDataSetChanged")
+    private fun imageCallback(imageResult: ImageResult<Uri>) {
+        when (imageResult) {
+            is ImageResult.Success -> {
+                val uri = imageResult.value
+                photoUris.add(uri)
+                adapter.notifyDataSetChanged()
+            }
+            is ImageResult.Failure -> {
+                val errorString = imageResult.errorString
+                Toast.makeText(requireContext(), errorString, Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
     // Set up fab to create new item w/ info

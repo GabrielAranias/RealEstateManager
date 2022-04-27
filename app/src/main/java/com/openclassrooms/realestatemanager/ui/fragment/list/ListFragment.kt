@@ -35,10 +35,7 @@ class ListFragment : Fragment() {
         val recyclerView = binding.estateList
         recyclerView.adapter = adapter
         recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                context,
-                LinearLayoutManager.VERTICAL
-            )
+            DividerItemDecoration(context, LinearLayoutManager.VERTICAL)
         )
     }
 

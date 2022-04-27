@@ -504,25 +504,13 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/add_dates" />
 
-            <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/add_photo"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:adjustViewBounds="true"
-                android:scaleType="fitXY"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_media_headline"
-                app:layout_constraintWidth_percent="0.5"
-                tools:src="@drawable/penthouse_sample" />
-
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/add_media_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/add_photo">
+                app:layout_constraintTop_toBottomOf="@+id/add_media_headline">
 
                 <Button
                     android:id="@+id/add_photo_camera"
@@ -553,6 +541,17 @@
                     app:layout_constraintWidth_percent="0.47" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/add_photo_list"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="16dp"
+                app:layoutManager="androidx.recyclerview.widget.StaggeredGridLayoutManager"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/add_media_layout"
+                app:spanCount="2"
+                tools:listitem="@layout/photo_item" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

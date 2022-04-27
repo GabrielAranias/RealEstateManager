@@ -21,24 +21,20 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
         context = parent.context
 
         return ListViewHolder(
-            EstateItemBinding.inflate(
-                LayoutInflater.from(parent.context),
-                parent,
-                false
-            )
+            EstateItemBinding.inflate(LayoutInflater.from(context), parent, false)
         )
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val currentItem = estateList[position]
-        holder.binding.estateType.text = currentItem.type
-        holder.binding.estateDistrict.text = currentItem.district
-        holder.binding.estatePrice.text =
-            context.getString(R.string.price, currentItem.price.toString())
-
-        holder.binding.estateItem.setOnClickListener {
-            val action = ListFragmentDirections.actionListFragmentToDetailFragment(currentItem)
-            holder.itemView.findNavController().navigate(action)
+        holder.binding.apply {
+            estateType.text = currentItem.type
+            estateDistrict.text = currentItem.district
+            estatePrice.text = context.getString(R.string.price, currentItem.price.toString())
+            estateItem.setOnClickListener {
+                val action = ListFragmentDirections.actionListFragmentToDetailFragment(currentItem)
+                holder.itemView.findNavController().navigate(action)
+            }
         }
     }
 

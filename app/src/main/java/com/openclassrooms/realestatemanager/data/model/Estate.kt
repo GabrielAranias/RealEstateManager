@@ -43,7 +43,7 @@ data class Estate(
         "",
         "",
         "",
-        listOf("") as ArrayList<String>
+        arrayListOf("")
     )
 
     // --- FOR CONTENT PROVIDER ---
@@ -52,7 +52,8 @@ data class Estate(
             values: ContentValues
         ): Estate {
             val estate = Estate()
-            if (values.containsKey(Constants.TYPE)) estate.type = values.getAsString(Constants.TYPE)
+            if (values.containsKey(Constants.TYPE)) estate.type =
+                values.getAsString(Constants.TYPE)
             if (values.containsKey(Constants.DISTRICT)) estate.district =
                 values.getAsString(Constants.DISTRICT)
             if (values.containsKey(Constants.PRICE)) estate.price =
@@ -78,7 +79,7 @@ data class Estate(
             if (values.containsKey(Constants.SALE_DATE)) estate.saleDate =
                 values.getAsString(Constants.SALE_DATE)
             if (values.containsKey(Constants.VICINITY)) estate.vicinity =
-                listOf(values.getAsString(Constants.VICINITY)) as ArrayList<String>
+                arrayListOf(values.getAsString(Constants.VICINITY))
             return estate
         }
     }

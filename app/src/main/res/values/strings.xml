@@ -50,9 +50,6 @@
     <string name="notification_description_long">The estate you have just created has been successfully added to the database</string>
     <string name="add_camera_btn">Camera</string>
     <string name="add_gallery_btn">Gallery</string>
-    <string name="photo_permission_title">Photo permission</string>
-    <string name="photo_permission_message">Photo permission is necessary for you to upload pictures</string>
-    <string name="permission_btn_title">Settings</string>
     <string name="bn_list">List</string>
     <string name="bn_map">Map</string>
     <string name="bn_search">Search</string>

@@ -72,13 +72,17 @@ dependencies {
     // KOTLIN COROUTINES
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.6.1")
 
-    // PERMISSION MANAGER
-    implementation 'com.github.DJSeokHo:EasyPermissionManager:1.0.9'
-
     // GSON
     implementation 'com.google.code.gson:gson:2.9.0'
 
     // GOOGLE MAPS
     implementation 'com.google.android.gms:play-services-location:19.0.1'
     implementation 'com.google.android.gms:play-services-maps:18.0.2'
+
+    // GLIDE
+    implementation 'com.github.bumptech.glide:glide:4.13.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.13.0'
+
+    // IMAGE PICKER
+    implementation 'com.github.ronnieotieno:Ronnie-Image-Picker:1.1.0'
 }

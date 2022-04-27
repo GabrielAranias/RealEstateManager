@@ -1,5 +1,7 @@
 package com.openclassrooms.realestatemanager.ui.fragment.update
 
+import android.annotation.SuppressLint
+import android.net.Uri
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextUtils
@@ -17,7 +19,10 @@ import com.google.android.material.datepicker.MaterialDatePicker
 import com.openclassrooms.realestatemanager.R
 import com.openclassrooms.realestatemanager.data.model.Estate
 import com.openclassrooms.realestatemanager.databinding.FragmentUpdateBinding
+import com.openclassrooms.realestatemanager.ui.fragment.add.GridAdapter
 import com.openclassrooms.realestatemanager.ui.viewModel.EstateViewModel
+import dev.ronnie.github.imagepicker.ImagePicker
+import dev.ronnie.github.imagepicker.ImageResult
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -28,6 +33,9 @@ class UpdateFragment : Fragment() {
     private val args by navArgs<UpdateFragmentArgs>()
     private lateinit var estateViewModel: EstateViewModel
     private var vicinity = ArrayList<String>()
+    private val photoUris = ArrayList<Uri>()
+    private lateinit var adapter: GridAdapter
+    private lateinit var imagePicker: ImagePicker
 
     // Date format for date picker
     private val outputDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).apply {
@@ -41,11 +49,13 @@ class UpdateFragment : Fragment() {
         _binding = FragmentUpdateBinding.inflate(inflater, container, false)
 
         estateViewModel = ViewModelProvider(this)[EstateViewModel::class.java]
+        imagePicker = ImagePicker(this)
 
         initUi()
         initDropDownMenus()
         initChipGroup()
         initDateBtn()
+        initPhotoHandling()
         initFab()
 
         return binding.root
@@ -143,6 +153,41 @@ class UpdateFragment : Fragment() {
                 binding.updateSelectedSaleDate.text = saleSelectedDate
             }
             salePicker.show(parentFragmentManager, "Sale Date Picker")
+        }
+    }
+
+    // Set up btn to pick photo in gallery or take picture w/ camera
+    private fun initPhotoHandling() {
+        // Init RecyclerView
+        val recyclerView = binding.addPhotoList
+        adapter = GridAdapter(photoUris, requireContext())
+        recyclerView.adapter = adapter
+        // Camera btn
+        binding.updatePhotoCamera.setOnClickListener {
+            imagePicker.takeFromCamera { imageResult ->
+                imageCallback(imageResult)
+            }
+        }
+        // Gallery btn
+        binding.updatePhotoGallery.setOnClickListener {
+            imagePicker.pickFromStorage { imageResult ->
+                imageCallback(imageResult)
+            }
+        }
+    }
+
+    @SuppressLint("NotifyDataSetChanged")
+    private fun imageCallback(imageResult: ImageResult<Uri>) {
+        when (imageResult) {
+            is ImageResult.Success -> {
+                val uri = imageResult.value
+                photoUris.add(uri)
+                adapter.notifyDataSetChanged()
+            }
+            is ImageResult.Failure -> {
+                val errorString = imageResult.errorString
+                Toast.makeText(requireContext(), errorString, Toast.LENGTH_SHORT).show()
+            }
         }
     }
 

@@ -94,7 +94,7 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickL
     }
 
     private fun getEstates() {
-        estateViewModel.readAllData.observe(this) { estateList ->
+        estateViewModel.readAllData.observe(viewLifecycleOwner) { estateList ->
             map?.clear()
             allEstates = estateList
             for (estate in estateList) {
@@ -180,9 +180,9 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickL
 
     private fun requestLocationPermission() {
         locationPermissionGranted = ContextCompat.checkSelfPermission(
-            requireContext(),
-            Manifest.permission.ACCESS_FINE_LOCATION
+            requireContext(), Manifest.permission.ACCESS_FINE_LOCATION
         ) == PackageManager.PERMISSION_GRANTED
+
         val permissionRequest: MutableList<String> = ArrayList()
         if (!locationPermissionGranted) {
             permissionRequest.add(Manifest.permission.ACCESS_FINE_LOCATION)
