@@ -182,6 +182,12 @@ class AddFragment : Fragment() {
             val price = binding.addPrice.text
 
             if (inputCheck(type, district, price)) {
+                // Convert uris to strings
+                val uris = ArrayList<String>()
+                for (uri in photoUris) {
+                    val strUri = uri.toString()
+                    uris.add(strUri)
+                }
                 // Create Estate object
                 val estate = Estate(
                     0,
@@ -198,7 +204,9 @@ class AddFragment : Fragment() {
                     address = binding.addAddress.text.toString(),
                     entryDate = binding.addSelectedEntryDate.text.toString(),
                     saleDate = binding.addSelectedSaleDate.text.toString(),
-                    vicinity
+                    vicinity,
+                    uris,
+                    photoCaptions
                 )
                 // Add data to db
                 estateViewModel.addEstate(estate)

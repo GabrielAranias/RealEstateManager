@@ -36,7 +36,7 @@ class UpdateFragment : Fragment() {
     private lateinit var estateViewModel: EstateViewModel
     private var vicinity = ArrayList<String>()
     private val photoUris = ArrayList<Uri>()
-    private val photoCaptions = ArrayList<String>()
+    private var photoCaptions = ArrayList<String>()
     private lateinit var adapter: GridAdapter
     private lateinit var imagePicker: ImagePicker
 
@@ -81,6 +81,8 @@ class UpdateFragment : Fragment() {
         binding.updateSelectedSaleDate.text = args.currentEstate.saleDate
         // Get POI chips
         getChips()
+        // Get photos
+        getPhotos()
     }
 
     private fun getChips() {
@@ -95,6 +97,20 @@ class UpdateFragment : Fragment() {
                 vicinity.remove(value)
             }
         }
+    }
+
+    private fun getPhotos() {
+        // Get uris x captions
+        val strUris = args.currentEstate.photoUris
+        for (strUri in strUris) {
+            val uri = Uri.parse(strUri)
+            photoUris.add(uri)
+        }
+        photoCaptions = args.currentEstate.photoCaptions
+        // Init RecyclerView
+        val recyclerView = binding.updatePhotoList
+        adapter = GridAdapter(photoUris, photoCaptions, requireContext())
+        recyclerView.adapter = adapter
     }
 
     // Set up drop-down menus for estate's type x status
@@ -161,10 +177,6 @@ class UpdateFragment : Fragment() {
 
     // Set up btn to pick photo in gallery or take picture w/ camera
     private fun initPhotoHandling() {
-        // Init RecyclerView
-        val recyclerView = binding.addPhotoList
-        adapter = GridAdapter(photoUris, photoCaptions, requireContext())
-        recyclerView.adapter = adapter
         // Camera btn
         binding.updatePhotoCamera.setOnClickListener {
             imagePicker.takeFromCamera { imageResult ->
@@ -211,6 +223,12 @@ class UpdateFragment : Fragment() {
             val price = binding.updatePrice.text
 
             if (inputCheck(type, district, price)) {
+                // Convert uris to strings
+                val uris = ArrayList<String>()
+                for (uri in photoUris) {
+                    val strUri = uri.toString()
+                    uris.add(strUri)
+                }
                 // Create Estate object
                 val updatedEstate = Estate(
                     args.currentEstate.id,
@@ -227,7 +245,9 @@ class UpdateFragment : Fragment() {
                     address = binding.updateAddress.text.toString(),
                     entryDate = binding.updateSelectedEntryDate.text.toString(),
                     saleDate = binding.updateSelectedSaleDate.text.toString(),
-                    vicinity
+                    vicinity,
+                    uris,
+                    photoCaptions
                 )
                 // Update current Estate
                 estateViewModel.updateEstate(updatedEstate)

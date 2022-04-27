@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.openclassrooms.realestatemanager.R
 import com.openclassrooms.realestatemanager.data.model.Estate
 import com.openclassrooms.realestatemanager.databinding.EstateItemBinding
@@ -28,9 +29,16 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
         val currentItem = estateList[position]
         holder.binding.apply {
+            // Photo
+            Glide.with(context)
+                .load(currentItem.photoUris[0])
+                .centerCrop()
+                .into(estatePhoto)
+            // Type, district x price
             estateType.text = currentItem.type
             estateDistrict.text = currentItem.district
             estatePrice.text = context.getString(R.string.price, currentItem.price.toString())
+            // Display details on click
             estateItem.setOnClickListener {
                 val action = ListFragmentDirections.actionListFragmentToDetailFragment(currentItem)
                 holder.itemView.findNavController().navigate(action)

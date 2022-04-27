@@ -25,7 +25,9 @@ data class Estate(
     var address: String,
     var entryDate: String,
     var saleDate: String,
-    var vicinity: ArrayList<String>
+    var vicinity: ArrayList<String>,
+    var photoUris: ArrayList<String>,
+    var photoCaptions: ArrayList<String>
 ) : Parcelable {
 
     constructor() : this(
@@ -43,6 +45,8 @@ data class Estate(
         "",
         "",
         "",
+        arrayListOf(""),
+        arrayListOf(""),
         arrayListOf("")
     )
 
@@ -80,6 +84,10 @@ data class Estate(
                 values.getAsString(Constants.SALE_DATE)
             if (values.containsKey(Constants.VICINITY)) estate.vicinity =
                 arrayListOf(values.getAsString(Constants.VICINITY))
+            if (values.containsKey(Constants.PHOTO_URIS)) estate.photoUris =
+                arrayListOf(values.getAsString(Constants.PHOTO_URIS))
+            if (values.containsKey(Constants.PHOTO_CAPTIONS)) estate.photoCaptions =
+                arrayListOf(values.getAsString(Constants.PHOTO_CAPTIONS))
             return estate
         }
     }

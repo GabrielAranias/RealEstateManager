@@ -98,7 +98,9 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
                 args.currentEstate.address,
                 args.currentEstate.entryDate,
                 args.currentEstate.saleDate,
-                args.currentEstate.vicinity
+                args.currentEstate.vicinity,
+                args.currentEstate.photoUris,
+                args.currentEstate.photoCaptions
             )
             val action =
                 DetailFragmentDirections.actionDetailFragmentToUpdateFragment(currentEstate)

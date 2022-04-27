@@ -19,6 +19,8 @@ object Constants {
     const val ENTRY_DATE = "entry_date"
     const val SALE_DATE = "sale_date"
     const val VICINITY = "vicinity"
+    const val PHOTO_URIS = "photo_uris"
+    const val PHOTO_CAPTIONS = "photo_captions"
 
     const val CAMERA_POSITION = "camera_position"
     const val LOCATION = "location"

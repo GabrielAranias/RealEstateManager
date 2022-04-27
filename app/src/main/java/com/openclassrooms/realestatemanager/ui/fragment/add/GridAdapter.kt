@@ -15,11 +15,6 @@ class GridAdapter(
 ) :
     RecyclerView.Adapter<GridAdapter.GridViewHolder>() {
 
-    companion object {
-        const val URI = 0
-        const val CAPTION = 0
-    }
-
     class GridViewHolder(val binding: PhotoItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridViewHolder {
