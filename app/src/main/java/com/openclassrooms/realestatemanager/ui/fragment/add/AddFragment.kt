@@ -6,8 +6,6 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -44,6 +42,7 @@ class AddFragment : Fragment() {
     private val photoCaptions = ArrayList<String>()
     private lateinit var adapter: GridAdapter
     private lateinit var imagePicker: ImagePicker
+    private var allFieldsChecked = false
 
     // Date format for date picker
     private val outputDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).apply {
@@ -177,11 +176,10 @@ class AddFragment : Fragment() {
     // Set up fab to create new item w/ info
     private fun initFab() {
         binding.addFab.setOnClickListener {
-            val type = binding.addType.text.toString()
-            val district = binding.addDistrict.text.toString()
-            val price = binding.addPrice.text
-
-            if (inputCheck(type, district, price)) {
+            // Check if some required fields are empty x prompt user to fill them in
+            allFieldsChecked = checkAllFields()
+            // After validation
+            if (allFieldsChecked) {
                 // Convert uris to strings
                 val uris = ArrayList<String>()
                 for (uri in photoUris) {
@@ -191,16 +189,16 @@ class AddFragment : Fragment() {
                 // Create Estate object
                 val estate = Estate(
                     0,
-                    type,
-                    district,
-                    Integer.parseInt(price.toString()),
+                    type = binding.addType.text.toString(),
+                    district = binding.addDistrict.text.toString(),
+                    price = Integer.parseInt(binding.addPrice.text.toString()),
                     description = binding.addDescription.text.toString(),
-                    surface = Integer.parseInt(binding.addSurface.text.toString()),
+                    surface = Integer.parseInt("0" + binding.addSurface.text.toString()),
                     realtor = binding.addRealtor.text.toString(),
                     status = binding.addStatus.text.toString(),
-                    nbRooms = Integer.parseInt(binding.addRooms.text.toString()),
-                    nbBedrooms = Integer.parseInt(binding.addBedrooms.text.toString()),
-                    nbBathrooms = Integer.parseInt(binding.addBathrooms.text.toString()),
+                    nbRooms = Integer.parseInt("0" + binding.addRooms.text.toString()),
+                    nbBedrooms = Integer.parseInt("0" + binding.addBedrooms.text.toString()),
+                    nbBathrooms = Integer.parseInt("0" + binding.addBathrooms.text.toString()),
                     address = binding.addAddress.text.toString(),
                     entryDate = binding.addSelectedEntryDate.text.toString(),
                     saleDate = binding.addSelectedSaleDate.text.toString(),
@@ -216,10 +214,54 @@ class AddFragment : Fragment() {
                 }
                 // Navigate back
                 findNavController().navigate(R.id.action_addFragment_to_listFragment)
-            } else {
-                Toast.makeText(requireContext(), R.string.add_error_msg, Toast.LENGTH_SHORT).show()
             }
         }
+    }
+
+    private fun checkAllFields(): Boolean {
+        binding.apply {
+            // Type
+            if (addType.text.toString().isEmpty()) {
+                addType.error = getString(R.string.error_type)
+                return false
+            } else {
+                addType.error = null
+            }
+            // Price
+            if (addPrice.text.toString().isEmpty()) {
+                addPrice.error = getString(R.string.error_price)
+                return false
+            } else {
+                addPrice.error = null
+            }
+            // Address
+            if (addAddress.text.toString().isEmpty()) {
+                addAddress.error = getString(R.string.error_address)
+                return false
+            } else {
+                addAddress.error = null
+            }
+            // District
+            if (addDistrict.text.toString().isEmpty()) {
+                addDistrict.error = getString(R.string.error_district)
+                return false
+            } else {
+                addDistrict.error = null
+            }
+            // Status
+            if (addStatus.text.toString() == resources.getStringArray(R.array.status)[1]
+                && addSelectedSaleDate.text == getString(R.string.not_sold)
+            ) {
+                Toast.makeText(requireContext(), R.string.error_status, Toast.LENGTH_SHORT).show()
+                return false
+            }
+            // Photo
+            if (photoUris.isEmpty()) {
+                Toast.makeText(requireContext(), R.string.error_photo, Toast.LENGTH_SHORT).show()
+                return false
+            }
+        }
+        return true
     }
 
     @RequiresApi(Build.VERSION_CODES.M)
@@ -249,10 +291,6 @@ class AddFragment : Fragment() {
         with(NotificationManagerCompat.from(requireContext())) {
             notify(Constants.NOTIFICATION_ID, builder.build())
         }
-    }
-
-    private fun inputCheck(type: String, district: String, price: Editable?): Boolean {
-        return !(TextUtils.isEmpty(type) && TextUtils.isEmpty(district) && price!!.isEmpty())
     }
 
     override fun onDestroyView() {

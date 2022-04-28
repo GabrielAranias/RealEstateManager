@@ -16,7 +16,8 @@ class GridAdapter(
 ) :
     RecyclerView.Adapter<GridAdapter.GridViewHolder>() {
 
-    inner class GridViewHolder(val binding: PhotoItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class GridViewHolder(val binding: PhotoItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridViewHolder {
         return GridViewHolder(
@@ -29,6 +30,7 @@ class GridAdapter(
             // Display photo
             Glide.with(context)
                 .load(uris[position])
+                .placeholder(R.drawable.nyc_loading_screen)
                 .error(R.drawable.ic_baseline_error_outline_24)
                 .centerCrop()
                 .into(photoImage)

@@ -3,8 +3,6 @@ package com.openclassrooms.realestatemanager.ui.fragment.update
 import android.annotation.SuppressLint
 import android.net.Uri
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextUtils
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +37,7 @@ class UpdateFragment : Fragment() {
     private var photoCaptions = ArrayList<String>()
     private lateinit var adapter: GridAdapter
     private lateinit var imagePicker: ImagePicker
+    private var allFieldsChecked = false
 
     // Date format for date picker
     private val outputDateFormat = SimpleDateFormat("dd MMM yyyy", Locale.getDefault()).apply {
@@ -221,11 +220,10 @@ class UpdateFragment : Fragment() {
     // Set up fab to update item w/ new info
     private fun initFab() {
         binding.updateFab.setOnClickListener {
-            val type = binding.updateType.text.toString()
-            val district = binding.updateDistrict.text.toString()
-            val price = binding.updatePrice.text
-
-            if (inputCheck(type, district, price)) {
+            // Check if some required fields are empty x prompt user to fill them in
+            allFieldsChecked = checkAllFields()
+            // After validation
+            if (allFieldsChecked) {
                 // Convert uris to strings
                 val uris = ArrayList<String>()
                 for (uri in photoUris) {
@@ -235,16 +233,16 @@ class UpdateFragment : Fragment() {
                 // Create Estate object
                 val updatedEstate = Estate(
                     args.currentEstate.id,
-                    type,
-                    district,
-                    Integer.parseInt(price.toString()),
+                    type = binding.updateType.text.toString(),
+                    district = binding.updateDistrict.text.toString(),
+                    price = Integer.parseInt(binding.updatePrice.text.toString()),
                     description = binding.updateDescription.text.toString(),
-                    surface = Integer.parseInt(binding.updateSurface.text.toString()),
+                    surface = Integer.parseInt("0" + binding.updateSurface.text.toString()),
                     realtor = binding.updateRealtor.text.toString(),
                     status = binding.updateStatus.text.toString(),
-                    nbRooms = Integer.parseInt(binding.updateRooms.text.toString()),
-                    nbBedrooms = Integer.parseInt(binding.updateBedrooms.text.toString()),
-                    nbBathrooms = Integer.parseInt(binding.updateBathrooms.text.toString()),
+                    nbRooms = Integer.parseInt("0" + binding.updateRooms.text.toString()),
+                    nbBedrooms = Integer.parseInt("0" + binding.updateBedrooms.text.toString()),
+                    nbBathrooms = Integer.parseInt("0" + binding.updateBathrooms.text.toString()),
                     address = binding.updateAddress.text.toString(),
                     entryDate = binding.updateSelectedEntryDate.text.toString(),
                     saleDate = binding.updateSelectedSaleDate.text.toString(),
@@ -256,14 +254,54 @@ class UpdateFragment : Fragment() {
                 estateViewModel.updateEstate(updatedEstate)
                 // Navigate back to list
                 findNavController().navigate(R.id.action_updateFragment_to_listFragment)
-            } else {
-                Toast.makeText(requireContext(), R.string.add_error_msg, Toast.LENGTH_SHORT).show()
             }
         }
     }
 
-    private fun inputCheck(type: String, district: String, price: Editable?): Boolean {
-        return !(TextUtils.isEmpty(type) && TextUtils.isEmpty(district) && price!!.isEmpty())
+    private fun checkAllFields(): Boolean {
+        binding.apply {
+            // Type
+            if (updateType.text.toString().isEmpty()) {
+                updateType.error = getString(R.string.error_type)
+                return false
+            } else {
+                updateType.error = null
+            }
+            // Price
+            if (updatePrice.text.toString().isEmpty()) {
+                updatePrice.error = getString(R.string.error_price)
+                return false
+            } else {
+                updatePrice.error = null
+            }
+            // Address
+            if (updateAddress.text.toString().isEmpty()) {
+                updateAddress.error = getString(R.string.error_address)
+                return false
+            } else {
+                updateAddress.error = null
+            }
+            // District
+            if (updateDistrict.text.toString().isEmpty()) {
+                updateDistrict.error = getString(R.string.error_district)
+                return false
+            } else {
+                updateDistrict.error = null
+            }
+            // Status
+            if (updateStatus.text.toString() == resources.getStringArray(R.array.status)[1]
+                && updateSelectedSaleDate.text == getString(R.string.not_sold)
+            ) {
+                Toast.makeText(requireContext(), R.string.error_status, Toast.LENGTH_SHORT).show()
+                return false
+            }
+            // Photo
+            if (photoUris.isEmpty()) {
+                Toast.makeText(requireContext(), R.string.error_photo, Toast.LENGTH_SHORT).show()
+                return false
+            }
+        }
+        return true
     }
 
     override fun onDestroyView() {

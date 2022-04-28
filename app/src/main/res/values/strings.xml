@@ -23,7 +23,6 @@
     <string name="add_sale_date">Date of sale</string>
     <string name="add_media">Media</string>
     <string name="add_fab">Fab to add new estate to the list</string>
-    <string name="add_error_msg">Please fill out all required fields</string>
     <string name="price">$%1$s</string>
     <string name="update_fab">Fab to validate estate\'s new info</string>
     <string name="update_fragment_label">Update Information</string>
@@ -69,6 +68,12 @@
     <string name="sim_5p">5%</string>
     <string name="sim_percent">%s%%</string>
     <string name="alert_dialog_title">Add a photo caption</string>
+    <string name="error_type">Estate\'s type required</string>
+    <string name="error_price">Estate\'s price required</string>
+    <string name="error_address">Estate\'s address required</string>
+    <string name="error_district">Estate\'s district required</string>
+    <string name="error_photo">Please upload at least one photo</string>
+    <string name="error_status">Please select a date of sale</string>
 
     <string-array name="types">
         <item>Condo</item>

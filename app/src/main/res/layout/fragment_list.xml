@@ -7,6 +7,12 @@
     android:background="@color/colorSecondary"
     tools:context=".ui.fragment.list.ListFragment">
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:tint="@color/colorSecondaryLight"
+        app:srcCompat="@drawable/ic_baseline_villa_24" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/estate_list"
         android:layout_width="match_parent"

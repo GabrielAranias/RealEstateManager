@@ -57,4 +57,14 @@
 
     </LinearLayout>
 
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/estate_ribbon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@id/estate_photo"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sold_ribbon"
+        tools:visibility="visible" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
