@@ -66,19 +66,22 @@ class UpdateFragment : Fragment() {
 
     //Set up layout w/ pre-filled info from current item
     private fun initUi() {
-        binding.updateType.setText(args.currentEstate.type)
-        binding.updateDistrict.setText(args.currentEstate.district)
-        binding.updatePrice.setText(args.currentEstate.price.toString())
-        binding.updateDescription.setText(args.currentEstate.description)
-        binding.updateSurface.setText(args.currentEstate.surface.toString())
-        binding.updateRealtor.setText(args.currentEstate.realtor)
-        binding.updateStatus.setText(args.currentEstate.status)
-        binding.updateRooms.setText(args.currentEstate.nbRooms.toString())
-        binding.updateBedrooms.setText(args.currentEstate.nbBedrooms.toString())
-        binding.updateBathrooms.setText(args.currentEstate.nbBathrooms.toString())
-        binding.updateAddress.setText(args.currentEstate.address)
-        binding.updateSelectedEntryDate.text = args.currentEstate.entryDate
-        binding.updateSelectedSaleDate.text = args.currentEstate.saleDate
+        // Get details
+        binding.apply {
+            updateType.setText(args.currentEstate.type)
+            updateDistrict.setText(args.currentEstate.district)
+            updatePrice.setText(args.currentEstate.price.toString())
+            updateDescription.setText(args.currentEstate.description)
+            updateSurface.setText(args.currentEstate.surface.toString())
+            updateRealtor.setText(args.currentEstate.realtor)
+            updateStatus.setText(args.currentEstate.status)
+            updateRooms.setText(args.currentEstate.nbRooms.toString())
+            updateBedrooms.setText(args.currentEstate.nbBedrooms.toString())
+            updateBathrooms.setText(args.currentEstate.nbBathrooms.toString())
+            updateAddress.setText(args.currentEstate.address)
+            updateSelectedEntryDate.text = args.currentEstate.entryDate
+            updateSelectedSaleDate.text = args.currentEstate.saleDate
+        }
         // Get POI chips
         getChips()
         // Get photos
@@ -100,12 +103,12 @@ class UpdateFragment : Fragment() {
     }
 
     private fun getPhotos() {
-        // Get uris x captions
-        val strUris = args.currentEstate.photoUris
-        for (strUri in strUris) {
+        // Get uris
+        for (strUri in args.currentEstate.photoUris) {
             val uri = Uri.parse(strUri)
             photoUris.add(uri)
         }
+        // Get captions
         photoCaptions = args.currentEstate.photoCaptions
         // Init RecyclerView
         val recyclerView = binding.updatePhotoList

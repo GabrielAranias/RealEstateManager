@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.openclassrooms.realestatemanager.R
 import com.openclassrooms.realestatemanager.databinding.PhotoItemBinding
 
 class GridAdapter(
@@ -15,7 +16,7 @@ class GridAdapter(
 ) :
     RecyclerView.Adapter<GridAdapter.GridViewHolder>() {
 
-    class GridViewHolder(val binding: PhotoItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class GridViewHolder(val binding: PhotoItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): GridViewHolder {
         return GridViewHolder(
@@ -28,6 +29,7 @@ class GridAdapter(
             // Display photo
             Glide.with(context)
                 .load(uris[position])
+                .error(R.drawable.ic_baseline_error_outline_24)
                 .centerCrop()
                 .into(photoImage)
             // Set caption

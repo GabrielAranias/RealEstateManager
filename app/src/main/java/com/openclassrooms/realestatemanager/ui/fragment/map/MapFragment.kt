@@ -163,10 +163,12 @@ class MapFragment : Fragment(), OnMapReadyCallback, GoogleMap.OnInfoWindowClickL
         try {
             if (locationPermissionGranted) {
                 map?.isMyLocationEnabled = true
-                map?.uiSettings?.isMyLocationButtonEnabled = true
-                map?.uiSettings?.isZoomControlsEnabled = true
-                map?.uiSettings?.isZoomGesturesEnabled = true
-                map?.uiSettings?.isScrollGesturesEnabled = true
+                map?.uiSettings?.apply {
+                    isMyLocationButtonEnabled = true
+                    isZoomControlsEnabled = true
+                    isZoomGesturesEnabled = true
+                    isScrollGesturesEnabled = true
+                }
             } else {
                 map?.isMyLocationEnabled = false
                 map?.uiSettings?.isMyLocationButtonEnabled = false

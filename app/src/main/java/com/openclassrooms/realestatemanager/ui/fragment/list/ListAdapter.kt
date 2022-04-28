@@ -16,7 +16,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
     private var estateList = emptyList<Estate>()
     private lateinit var context: Context
 
-    class ListViewHolder(val binding: EstateItemBinding) : RecyclerView.ViewHolder(binding.root)
+    inner class ListViewHolder(val binding: EstateItemBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
         context = parent.context
@@ -32,6 +32,7 @@ class ListAdapter : RecyclerView.Adapter<ListAdapter.ListViewHolder>() {
             // Photo
             Glide.with(context)
                 .load(currentItem.photoUris[0])
+                .error(R.drawable.ic_baseline_error_outline_24)
                 .centerCrop()
                 .into(estatePhoto)
             // Type, district x price

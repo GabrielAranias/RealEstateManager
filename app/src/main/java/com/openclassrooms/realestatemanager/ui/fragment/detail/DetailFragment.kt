@@ -1,7 +1,9 @@
 package com.openclassrooms.realestatemanager.ui.fragment.detail
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.location.Geocoder
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,6 +12,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import androidx.viewpager2.widget.ViewPager2
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -25,6 +28,9 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
     private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
     private val args by navArgs<DetailFragmentArgs>()
+    private val photoUris = ArrayList<Uri>()
+    private var photoCaptions = ArrayList<String>()
+    private lateinit var adapter: PagerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,47 +43,71 @@ class DetailFragment : Fragment(), OnMapReadyCallback {
             childFragmentManager.findFragmentById(R.id.detail_map) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        initSlider()
         initUi()
         initFab()
 
         return binding.root
     }
 
+    // Display estate photos w/ slider
+    private fun initSlider() {
+        // Get uris
+        for (strUri in args.currentEstate.photoUris) {
+            val uri = Uri.parse(strUri)
+            photoUris.add(uri)
+        }
+        // Get captions
+        photoCaptions = args.currentEstate.photoCaptions
+        // Init ViewPager
+        val viewPager = binding.detailPager
+        adapter = PagerAdapter(photoUris, photoCaptions, requireContext())
+        viewPager.adapter = adapter
+        // Register for page change callback
+        viewPager.registerOnPageChangeCallback(
+            object : ViewPager2.OnPageChangeCallback() {
+
+                @SuppressLint("SetTextI18n")
+                override fun onPageSelected(position: Int) {
+                    super.onPageSelected(position)
+                    // Update page number
+                    binding.detailPageCounter.text = "${position + 1} / ${photoUris.size}"
+                }
+            }
+        )
+    }
+
     // Set up layout w/ estate's details
     private fun initUi() {
-        binding.detailDescription.text = args.currentEstate.description
-        binding.detailSurface.text =
-            requireContext().getString(
+        binding.apply {
+            detailDescription.text = args.currentEstate.description
+            detailSurface.text = requireContext().getString(
                 R.string.detail_surface,
                 args.currentEstate.surface.toString()
             )
-        binding.detailRealtor.text =
-            requireContext().getString(R.string.detail_realtor, args.currentEstate.realtor)
-        binding.detailStatus.text =
-            requireContext().getString(R.string.detail_status, args.currentEstate.status)
-        binding.detailRooms.text =
-            requireContext().getString(
+            detailRealtor.text =
+                requireContext().getString(R.string.detail_realtor, args.currentEstate.realtor)
+            detailStatus.text =
+                requireContext().getString(R.string.detail_status, args.currentEstate.status)
+            detailRooms.text = requireContext().getString(
                 R.string.detail_rooms,
                 args.currentEstate.nbRooms.toString()
             )
-        binding.detailBedrooms.text =
-            requireContext().getString(
+            detailBedrooms.text = requireContext().getString(
                 R.string.detail_bedrooms,
                 args.currentEstate.nbBedrooms.toString()
             )
-        binding.detailBathrooms.text =
-            requireContext().getString(
+            detailBathrooms.text = requireContext().getString(
                 R.string.detail_bathrooms,
                 args.currentEstate.nbBathrooms.toString()
             )
-        binding.detailAddress.text = args.currentEstate.address
-        binding.detailEntryDate.text = requireContext().getString(
-            R.string.detail_entry_date, args.currentEstate.entryDate
-        )
-        binding.detailSaleDate.text = requireContext().getString(
-            R.string.detail_sale_date, args.currentEstate.saleDate
-        )
-        binding.detailVicinity.text = args.currentEstate.vicinity.joinToString(", ")
+            detailAddress.text = args.currentEstate.address
+            detailEntryDate.text =
+                requireContext().getString(R.string.detail_entry_date, args.currentEstate.entryDate)
+            detailSaleDate.text =
+                requireContext().getString(R.string.detail_sale_date, args.currentEstate.saleDate)
+            detailVicinity.text = args.currentEstate.vicinity.joinToString(", ")
+        }
     }
 
     // Set up fab to navigate to UpdateFragment on click

@@ -42,35 +42,37 @@ class SimFragment : Fragment() {
     }
 
     private fun updateValues() {
-        val yearFiveEMI = calculateEMI(5)
-        val yearFiveTotal = yearFiveEMI * 5.00 * 12.00
-        binding.simTotalYear5Et.setText(String.format("%.02f", yearFiveTotal))
-        binding.simEmiYear5Et.setText(String.format("%.02f", yearFiveEMI))
+        binding.apply {
+            val yearFiveEMI = calculateEMI(5)
+            val yearFiveTotal = yearFiveEMI * 5.00 * 12.00
+            simTotalYear5Et.setText(String.format("%.02f", yearFiveTotal))
+            simEmiYear5Et.setText(String.format("%.02f", yearFiveEMI))
 
-        val yearTenEMI = calculateEMI(10)
-        val yearTenTotal = yearTenEMI * 10.00 * 12.00
-        binding.simTotalYear10Et.setText(String.format("%.02f", yearTenTotal))
-        binding.simEmiYear10Et.setText(String.format("%.02f", yearTenEMI))
+            val yearTenEMI = calculateEMI(10)
+            val yearTenTotal = yearTenEMI * 10.00 * 12.00
+            simTotalYear10Et.setText(String.format("%.02f", yearTenTotal))
+            simEmiYear10Et.setText(String.format("%.02f", yearTenEMI))
 
-        val yearFifteenEMI = calculateEMI(15)
-        val yearFifteenTotal = yearFifteenEMI * 15.00 * 12.00
-        binding.simTotalYear15Et.setText(String.format("%.02f", yearFifteenTotal))
-        binding.simEmiYear15Et.setText(String.format("%.02f", yearFifteenEMI))
+            val yearFifteenEMI = calculateEMI(15)
+            val yearFifteenTotal = yearFifteenEMI * 15.00 * 12.00
+            simTotalYear15Et.setText(String.format("%.02f", yearFifteenTotal))
+            simEmiYear15Et.setText(String.format("%.02f", yearFifteenEMI))
 
-        val yearTwentyEMI = calculateEMI(20)
-        val yearTwentyTotal = yearTwentyEMI * 20.00 * 12.00
-        binding.simTotalYear20Et.setText(String.format("%.02f", yearTwentyTotal))
-        binding.simEmiYear20Et.setText(String.format("%.02f", yearTwentyEMI))
+            val yearTwentyEMI = calculateEMI(20)
+            val yearTwentyTotal = yearTwentyEMI * 20.00 * 12.00
+            simTotalYear20Et.setText(String.format("%.02f", yearTwentyTotal))
+            simEmiYear20Et.setText(String.format("%.02f", yearTwentyEMI))
 
-        val yearTwentyFiveEMI = calculateEMI(25)
-        val yearTwentyFiveTotal = yearTwentyFiveEMI * 25.00 * 12.00
-        binding.simTotalYear25Et.setText(String.format("%.02f", yearTwentyFiveTotal))
-        binding.simEmiYear25Et.setText(String.format("%.02f", yearTwentyFiveEMI))
+            val yearTwentyFiveEMI = calculateEMI(25)
+            val yearTwentyFiveTotal = yearTwentyFiveEMI * 25.00 * 12.00
+            simTotalYear25Et.setText(String.format("%.02f", yearTwentyFiveTotal))
+            simEmiYear25Et.setText(String.format("%.02f", yearTwentyFiveEMI))
 
-        val yearThirtyEMI = calculateEMI(30)
-        val yearThirtyTotal = yearThirtyEMI * 30.00 * 12.00
-        binding.simTotalYear30Et.setText(String.format("%.02f", yearThirtyTotal))
-        binding.simEmiYear30Et.setText(String.format("%.02f", yearThirtyEMI))
+            val yearThirtyEMI = calculateEMI(30)
+            val yearThirtyTotal = yearThirtyEMI * 30.00 * 12.00
+            simTotalYear30Et.setText(String.format("%.02f", yearThirtyTotal))
+            simEmiYear30Et.setText(String.format("%.02f", yearThirtyEMI))
+        }
     }
 
     private fun calculateEMI(years: Int): Double {

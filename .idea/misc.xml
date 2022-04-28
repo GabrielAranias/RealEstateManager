@@ -15,6 +15,7 @@
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_delete_24.xml" value="0.209" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_description_24.xml" value="0.205" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_edit_24.xml" value="0.121" />
+        <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_error_outline_24.xml" value="0.209" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_holiday_village_24.xml" value="0.205" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.205" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_hot_tub_24.xml" value="0.205" />
@@ -43,7 +44,9 @@
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/fragment_search.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/fragment_sim.xml" value="0.264" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/fragment_update.xml" value="0.264" />
+        <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/pager_item.xml" value="0.264" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/photo_item.xml" value="0.264" />
+        <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/slider_item.xml" value="0.2" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/menu/app_bar_menu.xml" value="0.264" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.20521590423257802" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/menu/toolbar_menu.xml" value="0.264" />
