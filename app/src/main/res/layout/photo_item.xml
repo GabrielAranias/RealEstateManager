@@ -29,7 +29,7 @@
         app:layout_constraintWidth_percent="0.5"
         tools:text="Caption" />
 
-    <Button
+    <androidx.appcompat.widget.AppCompatImageButton
         android:id="@+id/photo_delete_btn"
         style="@style/Widget.MaterialComponents.Button.Icon"
         android:layout_width="0dp"
@@ -37,8 +37,8 @@
         android:background="@android:color/transparent"
         android:minWidth="48dp"
         android:minHeight="48dp"
-        app:icon="@drawable/ic_baseline_delete_24"
-        app:iconTint="@color/colorAccent"
+        android:src="@drawable/ic_baseline_delete_24"
+        android:tint="@color/colorAccent"
         app:layout_constraintEnd_toEndOf="@id/photo_image"
         app:layout_constraintHeight_percent="0.18"
         app:layout_constraintTop_toTopOf="@id/photo_image"

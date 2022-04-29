@@ -24,6 +24,7 @@
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_park_24.xml" value="0.205" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.205" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_point_of_sale_24.xml" value="0.205" />
+        <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_refresh_24.xml" value="0.209" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_streetview_24.xml" value="0.205" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_terrain_24.xml" value="0.205" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/drawable/ic_baseline_update_24.xml" value="0.205" />
@@ -41,7 +42,7 @@
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/fragment_list.xml" value="0.264" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/fragment_main.xml" value="0.2" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/fragment_map.xml" value="0.20521590423257802" />
-        <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/fragment_search.xml" value="0.20521590423257802" />
+        <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/fragment_search.xml" value="0.264" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/fragment_sim.xml" value="0.264" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/fragment_update.xml" value="0.264" />
         <entry key="..\:/Users/MSI/Documents/Formation/P9/RealEstateManager/app/src/main/res/layout/pager_item.xml" value="0.264" />

@@ -295,6 +295,22 @@ class UpdateFragment : Fragment() {
                 Toast.makeText(requireContext(), R.string.error_status, Toast.LENGTH_SHORT).show()
                 return false
             }
+            // Dates
+            if (updateSelectedEntryDate.text.toString() == getString(R.string.no_date_selected)) {
+                Toast.makeText(
+                    requireContext(),
+                    getString(R.string.error_entry_date),
+                    Toast.LENGTH_SHORT
+                ).show()
+                return false
+            }
+            if (updateSelectedSaleDate.text.toString() != getString(R.string.not_sold) && (updateStatus.text.toString()
+                    .isEmpty() || updateStatus.text.toString() == resources.getStringArray(R.array.status)[0])
+            ) {
+                Toast.makeText(requireContext(), R.string.error_sale_date, Toast.LENGTH_SHORT)
+                    .show()
+                return false
+            }
             // Photo
             if (photoUris.isEmpty()) {
                 Toast.makeText(requireContext(), R.string.error_photo, Toast.LENGTH_SHORT).show()

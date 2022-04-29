@@ -74,6 +74,27 @@
     <string name="error_district">Estate\'s district required</string>
     <string name="error_photo">Please upload at least one photo</string>
     <string name="error_status">Please select a date of sale</string>
+    <string name="error_entry_date">Please select a date of market entry</string>
+    <string name="error_sale_date">Please update estate\'s status</string>
+    <string name="error_status_search">Estate\'s status required</string>
+    <string name="error_surface_min">Minimum surface required</string>
+    <string name="error_surface_max">Maximum surface required</string>
+    <string name="error_rooms_min">Minimum no. of rooms required</string>
+    <string name="error_rooms_max">Maximum no. of rooms required</string>
+    <string name="error_price_min">Minimum price required</string>
+    <string name="error_price_max">Maximum price required</string>
+    <string name="error_availability_date">Please select a date of availability</string>
+    <string name="search_fab">Fab to launch search</string>
+    <string name="search_title">Your search criteria</string>
+    <string name="search_minimum">Minimum</string>
+    <string name="search_maximum">Maximum</string>
+    <string name="search_rooms">No. of rooms</string>
+    <string name="search_price">Price ($)</string>
+    <string name="search_date">Availability date</string>
+    <string name="search_results">Your search results</string>
+    <string name="search_start_date">Availability date</string>
+    <string name="search_no_result">No match found</string>
+    <string name="search_result_msg">"%1$d result(s) found</string>
 
     <string-array name="types">
         <item>Condo</item>
