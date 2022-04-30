@@ -50,6 +50,7 @@ public class Utils {
      * @param context
      * @return
      */
+    @SuppressLint("MissingPermission")
     public static Boolean isInternetAvailable(Context context) {
         // Check connectivity instead of Wifi only
         ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
