@@ -26,4 +26,8 @@ interface EstateDao {
 
     @Query("SELECT * FROM estate ORDER BY id ASC")
     fun readAllDataWithCursor(): Cursor
+
+    // --- FOR TESTING ---
+    @Query("SELECT * FROM estate WHERE type LIKE :search")
+    fun findEstateByType(search: String): LiveData<List<Estate>>
 }
