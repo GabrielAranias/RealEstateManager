@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorSecondary"
+    tools:context=".ui.fragment.detail.DetailFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/detail_pager"
+                android:layout_width="match_parent"
+                android:layout_height="260dp"
+                android:orientation="horizontal"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/detail_page_counter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle2"
+                android:textColor="@color/colorPrimaryDark"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="01/10" />
+
+            <TextView
+                android:id="@+id/detail_description_headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/detail_description_headline"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_pager" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/detail_description_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:backgroundTint="@color/colorSecondary"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_description_headline">
+
+                <TextView
+                    android:id="@+id/detail_description"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="8dp"
+                    android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                    tools:text="Nice penthouse" />
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/detail_about_headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/detail_about_headline"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_description_cv" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/detail_about_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:backgroundTint="@color/colorSecondary"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_about_headline">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/detail_surface"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawablePadding="6dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        app:drawableStartCompat="@drawable/ic_baseline_point_of_sale_24"
+                        app:drawableTint="@color/colorPrimary"
+                        tools:text="Surface" />
+
+                    <TextView
+                        android:id="@+id/detail_rooms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawablePadding="6dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        app:drawableStartCompat="@drawable/ic_baseline_home_24"
+                        app:drawableTint="@color/colorPrimary"
+                        tools:text="Rooms" />
+
+                    <TextView
+                        android:id="@+id/detail_bedrooms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawablePadding="6dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        app:drawableStartCompat="@drawable/ic_baseline_bed_24"
+                        app:drawableTint="@color/colorPrimary"
+                        tools:text="Bedrooms" />
+
+                    <TextView
+                        android:id="@+id/detail_bathrooms"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawablePadding="6dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        app:drawableStartCompat="@drawable/ic_baseline_hot_tub_24"
+                        app:drawableTint="@color/colorPrimary"
+                        tools:text="Bathrooms" />
+
+                    <TextView
+                        android:id="@+id/detail_realtor"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawablePadding="6dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        app:drawableStartCompat="@drawable/ic_baseline_person_24"
+                        app:drawableTint="@color/colorPrimary"
+                        tools:text="Realtor" />
+
+                    <TextView
+                        android:id="@+id/detail_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawablePadding="6dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        app:drawableStartCompat="@drawable/ic_baseline_point_of_sale_24"
+                        app:drawableTint="@color/colorPrimary"
+                        tools:text="Status" />
+
+                    <TextView
+                        android:id="@+id/detail_entry_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawablePadding="6dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        app:drawableStartCompat="@drawable/ic_baseline_date_range_24"
+                        app:drawableTint="@color/colorPrimary"
+                        tools:text="Entry date" />
+
+                    <TextView
+                        android:id="@+id/detail_sale_date"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:drawablePadding="6dp"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        app:drawableStartCompat="@drawable/ic_baseline_update_24"
+                        app:drawableTint="@color/colorPrimary"
+                        tools:text="Sale date" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/detail_vicinity_headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/add_vicinity_headline"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_about_cv" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/detail_vicinity_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:backgroundTint="@color/colorSecondary"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_vicinity_headline">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/detail_vicinity_intro"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp"
+                        android:text="@string/detail_vicinity"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1" />
+
+                    <TextView
+                        android:id="@+id/detail_vicinity"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="8dp" />
+
+                </LinearLayout>
+
+            </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/detail_location_headline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:text="@string/add_location_headline"
+                android:textAppearance="@style/TextAppearance.MaterialComponents.Headline6"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/detail_vicinity_cv" />
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/detail_location_cv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="16dp"
+                android:layout_marginVertical="8dp"
+                android:backgroundTint="@color/colorSecondary"
+                app:cardCornerRadius="6dp"
+                app:cardElevation="4dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/detail_location_headline">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <androidx.fragment.app.FragmentContainerView
+                        android:id="@+id/detail_map"
+                        android:name="com.google.android.gms.maps.SupportMapFragment"
+                        android:layout_width="match_parent"
+                        android:layout_height="270dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        map:liteMode="true"
+                        map:mapType="normal" />
+
+                    <TextView
+                        android:id="@+id/detail_address"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:alpha="0.7"
+                        android:background="@color/colorAccent"
+                        android:ellipsize="marquee"
+                        android:gravity="center"
+                        android:marqueeRepeatLimit="marquee_forever"
+                        android:singleLine="true"
+                        android:textAppearance="@style/TextAppearance.MaterialComponents.Body1"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        tools:text="Address" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/detail_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/colorAccent"
+        android:contentDescription="@string/detail_fab"
+        android:minWidth="48dp"
+        android:minHeight="48dp"
+        app:srcCompat="@drawable/ic_baseline_edit_24" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
