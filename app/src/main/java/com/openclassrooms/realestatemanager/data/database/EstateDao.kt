@@ -17,6 +17,10 @@ interface EstateDao {
     @Query("SELECT * FROM estate ORDER BY id ASC")
     fun readAllData(): LiveData<List<Estate>>
 
+    // --- FOR TESTING ---
+    @Delete
+    suspend fun deleteEstate(estate: Estate)
+
     // --- FOR CONTENT PROVIDER ---
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun addEstateForContentProvider(estate: Estate): Long
@@ -26,8 +30,4 @@ interface EstateDao {
 
     @Query("SELECT * FROM estate ORDER BY id ASC")
     fun readAllDataWithCursor(): Cursor
-
-    // --- FOR TESTING ---
-    @Query("SELECT * FROM estate WHERE type LIKE :search")
-    fun findEstateByType(search: String): LiveData<List<Estate>>
 }

@@ -1,4 +1,4 @@
-package com.openclassrooms.realestatemanager
+package com.openclassrooms.realestatemanager.provider
 
 import android.content.ContentResolver
 import android.content.ContentUris
@@ -7,7 +7,6 @@ import androidx.room.Room
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.platform.app.InstrumentationRegistry
 import com.openclassrooms.realestatemanager.data.database.EstateDatabase
-import com.openclassrooms.realestatemanager.provider.EstateContentProvider
 import com.openclassrooms.realestatemanager.utils.Constants
 import org.junit.Assert.*
 import org.junit.Before

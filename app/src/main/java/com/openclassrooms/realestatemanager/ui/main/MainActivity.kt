@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.main_fragment_container)
-        val navController = navHostFragment!!.findNavController()
+        val navController = navHostFragment?.findNavController()
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.listFragment,
@@ -37,10 +37,12 @@ class MainActivity : AppCompatActivity() {
             )
         )
 
-        // Set up action bar
-        setupActionBarWithNavController(navController, appBarConfiguration)
-        // Set up bottom navigation bar
-        binding.mainBottomNavigation.setupWithNavController(navController)
+        navController?.let {
+            // Set up action bar
+            setupActionBarWithNavController(it, appBarConfiguration)
+            // Set up bottom navigation bar
+            binding.mainBottomNavigation.setupWithNavController(it)
+        }
 
         createNotificationChannel()
     }

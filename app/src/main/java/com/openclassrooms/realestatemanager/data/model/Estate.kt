@@ -11,7 +11,7 @@ import kotlinx.parcelize.Parcelize
 @Entity(tableName = "estate")
 data class Estate(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    var id: Int,
     var type: String,
     var district: String,
     var price: Int,
